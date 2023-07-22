@@ -72,6 +72,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.translateTextView1.font = UIFont.boldSystemFont(ofSize: 15)
+        self.translateTextView2.font = UIFont.boldSystemFont(ofSize: 15)
+
         self.translateTextView1.delegate = self
 
 //        translateTextView2（下のtextView）タップして、viewをキーボードの高さ分あげるためのNotificationCenter
@@ -289,15 +292,17 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             self.label1.text = "ドラマや映画のフレーズや単語、自英作文などを入力して作成したフォルダーに保存しよう！"
         }
 
-        if self.languageLabel1.text == "Japanese" {
-            self.translateJapanese()
-        } else {
-            self.translateEnglish()
-        }
+//         if self.languageLabel1.text == "Japanese" {
+//             self.translateJapanese()
+//         } else {
+//             self.translateEnglish()
+//         }
     }
 
     // 英語を訳す
     private func translateEnglish() {
+        self.translateButton.isEnabled = false
+        SVProgressHUD.show(withStatus: "翻訳中")
         let authKey1 = KeyManager().getValue(key: "apiKey") as! String
 
         //            前後のスペースと改行を削除
@@ -337,17 +342,25 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                     // 結果のテキストを取得&画面に反映
                     let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
                     self.translateTextView2.text = text
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    SVProgressHUD.showSuccess(withStatus: "翻訳完了")
+                    SVProgressHUD.dismiss(withDelay: 1.5)
                 } catch {
                     debugPrint("デコード失敗")
+                    SVProgressHUD.showError(withStatus: "翻訳できませんでした")
                 }
             } else {
                 debugPrint("APIリクエストエラー")
+                SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }
+            self.translateButton.isEnabled = true
         }
     }
 
     // 日本語を訳す
     private func translateJapanese() {
+        self.translateButton.isEnabled = false
+        SVProgressHUD.show(withStatus: "翻訳中...")
         // APIKey.plistに保存したDeepLの認証キーを取得
         let authKey1 = KeyManager().getValue(key: "apiKey") as! String
 
@@ -387,12 +400,18 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                     // 結果のテキストを取得&画面に反映
                     let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
                     self.translateTextView2.text = text
+                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                    SVProgressHUD.showSuccess(withStatus: "翻訳完了")
+                    SVProgressHUD.dismiss(withDelay: 1.5)
                 } catch {
                     debugPrint("デコード失敗")
+                    SVProgressHUD.showError(withStatus: "翻訳できませんでした")
                 }
             } else {
                 debugPrint("APIリクエストエラー")
+                SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }
+            self.translateButton.isEnabled = true
         }
     }
 
@@ -451,7 +470,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             }
 
             SVProgressHUD.showSuccess(withStatus: "'\(folderNameString)' へ保存しました")
-            SVProgressHUD.dismiss(withDelay: 1.5)
+            UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            self.saveButton.isEnabled = false
+            SVProgressHUD.dismiss(withDelay: 1.5) {
+                self.saveButton.isEnabled = true
+            }
         }
     }
 
@@ -524,28 +547,62 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     }
 
     //　translateTextView1の音声再生
-    @IBAction func volumeButton1(_: Any) {
+    @IBAction func volumeButton1(_ sender: UIButton) {
         // contextMenuを表示
-        self.speak(textView: self.translateTextView1)
-        self.shouldSpeakWhenTappedVolumeButton1 = true
-        self.shouldSpeakWhenTappedVolumeButton2 = false
+//        self.speak(textView: self.translateTextView1)
+//        self.shouldSpeakWhenTappedVolumeButton1 = true
+//        self.shouldSpeakWhenTappedVolumeButton2 = false
+        self.configureMenuButtonForVoluemButton(volumeButton: sender)
     }
 
     //　translateTextView2の音声再生
-    @IBAction func volumeButton2(_: Any) {
+    @IBAction func volumeButton2(_ sender: UIButton) {
         // contextMenuを表示
-        self.speak(textView: self.translateTextView2)
-        self.shouldSpeakWhenTappedVolumeButton2 = true
-        self.shouldSpeakWhenTappedVolumeButton1 = false
+//        self.speak(textView: self.translateTextView2)
+//        self.shouldSpeakWhenTappedVolumeButton2 = true
+//        self.shouldSpeakWhenTappedVolumeButton1 = false
+        self.configureMenuButtonForVoluemButton(volumeButton: sender)
     }
 
     // contextMenuを表示
-    private func speak(textView: UITextView) {
-        let english = ContextMenuItemWithImage(title: "英語音声", image: UIImage())
-        let japanese = ContextMenuItemWithImage(title: "日本語音声", image: UIImage())
-        let stop = ContextMenuItemWithImage(title: "停止", image: UIImage())
-        CM.items = [english, japanese, stop]
-        CM.showMenu(viewTargeted: textView, delegate: self, animated: true)
+    /*
+     private func speak(textView: UITextView) {
+         let english = ContextMenuItemWithImage(title: "英語音声", image: UIImage())
+         let japanese = ContextMenuItemWithImage(title: "日本語音声", image: UIImage())
+         let stop = ContextMenuItemWithImage(title: "停止", image: UIImage())
+         CM.items = [english, japanese, stop]
+         CM.showMenu(viewTargeted: textView, delegate: self, animated: true)
+     }
+      */
+
+    private func configureMenuButtonForVoluemButton(volumeButton: UIButton) {
+        var actions: [UIMenuElement] = []
+        if #available(iOS 16.0, *) {
+            self.volumeButton2.preferredMenuElementOrder = .fixed
+        } else {
+            // Fallback on earlier versions
+            print("iOSが16.0ではないため、preferredMenuElementOrder = .fixed が有効になりません。")
+        }
+        actions.append(UIAction(title: "英語音声", handler: { _ in
+            if volumeButton == self.volumeButton1 {
+                self.implementSpeaking(translateTextView: self.translateTextView1, language: "en-US")
+            } else if volumeButton == self.volumeButton2 {
+                self.implementSpeaking(translateTextView: self.translateTextView2, language: "en-US")
+            }
+        }))
+        actions.append(UIAction(title: "日本語音声", handler: { _ in
+            if volumeButton == self.volumeButton1 {
+                self.implementSpeaking(translateTextView: self.translateTextView1, language: "ja-JP")
+            } else if volumeButton == self.volumeButton2 {
+                self.implementSpeaking(translateTextView: self.translateTextView2, language: "ja-JP")
+            }
+        }))
+        actions.append(UIAction(title: "音声停止", handler: { _ in
+            self.talker.stopSpeaking(at: AVSpeechBoundary.immediate)
+        }))
+
+        volumeButton.menu = UIMenu(title: "", options: .displayInline, children: actions)
+        volumeButton.showsMenuAsPrimaryAction = true
     }
 }
 
@@ -583,6 +640,7 @@ extension TranslateViewController: ContextMenuDelegate {
 
 //    音声再生を実行するメソッド
     private func implementSpeaking(translateTextView: UITextView, language: String) {
+        self.talker.stopSpeaking(at: AVSpeechBoundary.immediate)
         let spokenText = translateTextView.text!
         //                話す内容をセット
         let utterance = AVSpeechUtterance(string: spokenText)
