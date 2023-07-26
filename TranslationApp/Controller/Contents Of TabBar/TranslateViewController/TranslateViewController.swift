@@ -320,7 +320,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         let headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded",
         ]
-                
+
         // DeepL APIリクエストを実行　Almofireはapi情報を取得するための便利なライブラリ　通常はswift側で用意されているURLSessionを使う。
         //        requestメソッドでAPIを呼ぶ
         // リクエスト成功か判定　encoder: URLEncodedFormParameterEncoder.default
