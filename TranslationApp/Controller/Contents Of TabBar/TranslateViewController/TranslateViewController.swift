@@ -320,11 +320,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         let headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded",
         ]
-
+                
         // DeepL APIリクエストを実行　Almofireはapi情報を取得するための便利なライブラリ　通常はswift側で用意されているURLSessionを使う。
         //        requestメソッドでAPIを呼ぶ
         // リクエスト成功か判定　encoder: URLEncodedFormParameterEncoder.default
-        print("APIリスクエスト前実行")
         AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
 //            print("エラー？")
 //            print("Reponse: \(response)")
