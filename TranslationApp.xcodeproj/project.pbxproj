@@ -28,6 +28,7 @@
 		835B38EC2950070200D42F50 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835B38EB2950070100D42F50 /* ChatList.swift */; };
 		836226812981632200AB98A3 /* BlockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836226802981632200AB98A3 /* BlockData.swift */; };
 		836226832981960100AB98A3 /* BlockUnblock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836226822981960100AB98A3 /* BlockUnblock.swift */; };
+		836455452A767D3E0018267B /* VoiceTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836455442A767D3E0018267B /* VoiceTubeViewController.swift */; };
 		836E69B5290EB9CD00048398 /* PostsHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836E69B4290EB9CD00048398 /* PostsHistoryViewController.swift */; };
 		8372AD902932E91500E230BF /* PagingPhraseWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8372AD8F2932E91500E230BF /* PagingPhraseWordViewController.swift */; };
 		837A82FA298BAA6C001049D4 /* DeleteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A82F9298BAA6C001049D4 /* DeleteData.swift */; };
@@ -161,6 +162,7 @@
 		835B38EB2950070100D42F50 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		836226802981632200AB98A3 /* BlockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockData.swift; sourceTree = "<group>"; };
 		836226822981960100AB98A3 /* BlockUnblock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockUnblock.swift; sourceTree = "<group>"; };
+		836455442A767D3E0018267B /* VoiceTubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceTubeViewController.swift; sourceTree = "<group>"; };
 		836E69B4290EB9CD00048398 /* PostsHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsHistoryViewController.swift; sourceTree = "<group>"; };
 		8372AD8F2932E91500E230BF /* PagingPhraseWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingPhraseWordViewController.swift; sourceTree = "<group>"; };
 		837A82F9298BAA6C001049D4 /* DeleteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteData.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				839FBA3028BA0F7000BB64A5 /* TranslateViewController.swift */,
+				836455442A767D3E0018267B /* VoiceTubeViewController.swift */,
 				83C15AF928BF451F00280694 /* SelectFolderForTranslateViewContoller.swift */,
 			);
 			path = TranslateViewController;
@@ -772,6 +775,7 @@
 				83AD2C1B290A48AB009B0C84 /* SecondTabBarController.swift in Sources */,
 				83A2E1B029019CA100F1117A /* SelectFolderForStudyViewContoller.swift in Sources */,
 				8385EA0E2951858B0034E0F6 /* ChatRoom.swift in Sources */,
+				836455452A767D3E0018267B /* VoiceTubeViewController.swift in Sources */,
 				836226812981632200AB98A3 /* BlockData.swift in Sources */,
 				8385E7302918D14300DBDBAC /* OthersPostsHistoryViewController.swift in Sources */,
 				8356E9572905584500FD9236 /* Record.swift in Sources */,
