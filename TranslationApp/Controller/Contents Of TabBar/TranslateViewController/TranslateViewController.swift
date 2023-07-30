@@ -385,7 +385,8 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         // .createメソッドで独自のObservable（イベントストリーム）を作成
         let translationObservable = Observable<DeepLResult>.create { observer in
             // この"observer"は.onNextや.onErrorなどのメソッドを使用して、仲介役として非同期処理の結果やエラーなどを、作成した独自のObservable（イベントストリーム）に通知
-            let request = AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in if case .success = response.result, let data = response.data {
+            let request = AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
+                if case .success = response.result, let data = response.data {
                 do {
                     let result = try JSONDecoder().decode(DeepLResult.self, from: data)
                     observer.onNext(result) // 非同期処理の結果を通知
@@ -397,9 +398,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 observer.onError(response.error ?? NSError()) // APIリクエストエラーの通知
             }
             }
-
+            
             return Disposables.create {
-                request.cancel() // Observableが破棄されたときに、リクエストをキャンセルする
+                // 購読解除後の処理
+                request.cancel() // translationObservableの終了後、不要なネットワークリクエストを行わないようにする
             }
         }
         
@@ -414,8 +416,8 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                 SVProgressHUD.showSuccess(withStatus: "翻訳完了")
                 SVProgressHUD.dismiss(withDelay: 1.5)
-            }, onError: { [weak self] error in
-                debugPrint("APIリクエストエラー: \(error)")
+            }, onError: { error in
+                debugPrint("APIリクエストエラー: \(error.localizedDescription)")
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }, onDisposed: { [weak self] in
                 self?.translateButton.isEnabled = true
