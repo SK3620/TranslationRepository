@@ -381,36 +381,35 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         let headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded",
         ]
-        
+
         // .createメソッドで独自のObservable（イベントストリーム）を作成
         let translationObservable = Observable<DeepLResult>.create { observer in
             // この"observer"は.onNextや.onErrorなどのメソッドを使用して、仲介役として非同期処理の結果やエラーなどを、作成した独自のObservable（イベントストリーム）に通知
             let request = AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
                 if case .success = response.result, let data = response.data {
-                do {
-                    let result = try JSONDecoder().decode(DeepLResult.self, from: data)
-                    observer.onNext(result) // 非同期処理の結果を通知
-                    observer.onCompleted() // 非同期処理の完了を通知
-                } catch {
-                    observer.onError(error) // 非同期処理でのエラーを通知
+                    do {
+                        let result = try JSONDecoder().decode(DeepLResult.self, from: data)
+                        observer.onNext(result) // 非同期処理の結果を通知
+                        observer.onCompleted() // 非同期処理の完了を通知 (購読が解除される)
+                    } catch {
+                        observer.onError(error) // 非同期処理でのエラーを通知 (購読が解除される)
+                    }
+                } else {
+                    observer.onError(response.error ?? NSError()) // APIリクエストエラーの通知
                 }
-            } else {
-                observer.onError(response.error ?? NSError()) // APIリクエストエラーの通知
             }
-            }
-            
+
             return Disposables.create {
                 // 購読解除後の処理
                 request.cancel() // translationObservableの終了後、不要なネットワークリクエストを行わないようにする
             }
         }
-        
+
         translationObservable
             .observe(on: MainScheduler.instance) // UI更新はメインスレッドで行う
             .subscribe(onNext: { [weak self] result in
                 // .subscribeでtranslationObservableストリームの(onNextやonErrorによる)変化を購読（監視）
-                
-                // 結果のテキストを取得&画面に反映
+                // completedかerrorが流れてくると、購読は解除される
                 let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
                 self?.translateTextView2.text = text
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
