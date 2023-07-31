@@ -202,11 +202,6 @@
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CR5-mX-I59">
-                                        <rect key="frame" x="331.66666666666669" y="362.33333333333331" width="53.333333333333314" height="34.333333333333314"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="test"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -232,10 +227,8 @@
                                     <constraint firstItem="fI1-Bl-qhM" firstAttribute="bottom" secondItem="VGe-sB-Lto" secondAttribute="bottom" id="fwD-U5-zjO"/>
                                     <constraint firstAttribute="trailing" secondItem="vp1-lh-siV" secondAttribute="trailing" constant="28" id="gEE-3J-AuK"/>
                                     <constraint firstItem="vp1-lh-siV" firstAttribute="top" secondItem="xe1-Cw-YaM" secondAttribute="bottom" constant="8" id="gFq-PC-aBf"/>
-                                    <constraint firstAttribute="trailing" secondItem="CR5-mX-I59" secondAttribute="trailing" constant="8" id="gVg-Wd-C5E"/>
                                     <constraint firstItem="apo-CF-Un8" firstAttribute="bottom" secondItem="vp1-lh-siV" secondAttribute="bottom" id="hLM-g5-Xxy"/>
                                     <constraint firstItem="VGe-sB-Lto" firstAttribute="top" secondItem="ZnX-1x-3Qk" secondAttribute="bottom" constant="8" id="ifr-lb-kTB"/>
-                                    <constraint firstItem="CR5-mX-I59" firstAttribute="centerY" secondItem="xe1-Cw-YaM" secondAttribute="centerY" id="kHL-rk-Lc3"/>
                                     <constraint firstItem="fI1-Bl-qhM" firstAttribute="top" secondItem="VGe-sB-Lto" secondAttribute="top" id="mkn-ca-dBP"/>
                                     <constraint firstItem="rtc-Hs-cis" firstAttribute="centerX" secondItem="ZnX-1x-3Qk" secondAttribute="centerX" id="p6y-YF-UhV"/>
                                     <constraint firstItem="ZnX-1x-3Qk" firstAttribute="centerX" secondItem="bAr-MF-mb1" secondAttribute="centerX" id="pFc-qo-LTZ"/>
@@ -283,7 +276,7 @@
         <!--Voice Tube View Controller-->
         <scene sceneID="kUl-0e-KTb">
             <objects>
-                <viewController id="Yuj-e8-xYY" customClass="VoiceTubeViewController" customModule="DeepL保存翻訳" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Yuj-e8-xYY" customClass="VoiceTubeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sDZ-85-dV1">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
