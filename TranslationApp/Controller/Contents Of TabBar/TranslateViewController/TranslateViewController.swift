@@ -421,9 +421,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             }, onDisposed: { [weak self] in
                 // シーケンスが正常に完了した時/エラーが流れてきた時などに実行される処理
                 self?.translateButton.isEnabled = true
+                print("onDispoed:のクロージャが呼び出された")
             })
-            .disposed(by: self.disposeBag) // DisposeBagクラスで購読を一括で廃棄
-        // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付け
+            .disposed(by: self.disposeBag)// DisposeBagクラスで購読を一括で廃棄
+        // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付けしただけ
         // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
     }
 
@@ -670,5 +671,11 @@ extension TranslateViewController: ContextMenuDelegate {
 
     func contextMenuDidDisappear(_: ContextMenu) {
         print("メニューが閉じました")
+    }
+}
+
+extension Disposable {
+    func disposedWithCompletion(by bag: DisposeBag, completion _: () -> Void) {
+        bag.insert(self)
     }
 }
