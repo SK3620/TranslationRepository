@@ -25,7 +25,11 @@ FirebaseUI/Storage
 CLImageEditor/AllTools 0.2.4  
 SwiftFormat/CLI  
 Parchment ~> 3.0  
-  
+MessageKit  
+FirebaseDatabase  
+RxSwift  
+RxCocoa  
+
 Installed in a terminal using CocoaPods
 # Development Environment  
 MacOS Monterey version 12.6 MacBook Pro (13-inch, 2019, Two Thunderbolt 3 ports)  
@@ -37,6 +41,10 @@ Contact Information: https://tayori.com/form/7c23974951b748bcda08896854f1e788443
 # License  
 There is no license for this program.  
 (This program is published in a public repository, so GitHub users can view and fork it.)  
+# Source Code Management Tools  
+Git/GitHub  
+Visual Studio Code (コードエディタ)   
+SourceTree  
 # Demo Video  
 The first demo video includes the feature to save the sentences to be translated and the translation results, the listening feature and other features.↓  
 
