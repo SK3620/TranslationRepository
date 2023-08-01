@@ -124,7 +124,7 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DW7-xt-4bg">
-                                                <rect key="frame" x="336" y="8" width="47" height="14"/>
+                                                <rect key="frame" x="326" y="8" width="47" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="47" id="yZi-4y-R5b"/>
                                                 </constraints>
@@ -135,7 +135,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ilw-gv-fTD">
-                                                <rect key="frame" x="10" y="8" width="47" height="14"/>
+                                                <rect key="frame" x="20" y="8" width="47" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="47" id="39V-YY-eR7"/>
                                                 </constraints>
@@ -146,13 +146,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOT-Kg-CXV">
-                                                <rect key="frame" x="19.333333333333329" y="15" width="28.666666666666671" height="13.333333333333336"/>
+                                                <rect key="frame" x="29.333333333333329" y="15" width="28.666666666666671" height="13.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="リピート" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-zV-wZm">
-                                                <rect key="frame" x="337" y="15" width="45" height="13.333333333333336"/>
+                                                <rect key="frame" x="327" y="15" width="45" height="13.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -164,7 +164,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6I9-WV-DjI">
-                                                <rect key="frame" x="302.66666666666669" y="8" width="24" height="14"/>
+                                                <rect key="frame" x="292.66666666666669" y="8" width="24" height="14"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                 <connections>
@@ -172,7 +172,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJp-I5-A5u">
-                                                <rect key="frame" x="66.333333333333329" y="8" width="24" height="14"/>
+                                                <rect key="frame" x="76.333333333333329" y="8" width="24" height="14"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                 <connections>
@@ -180,13 +180,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="速度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dap-TB-hJh">
-                                                <rect key="frame" x="303.33333333333331" y="15" width="22.666666666666686" height="13.333333333333336"/>
+                                                <rect key="frame" x="293.33333333333331" y="15" width="22.666666666666686" height="13.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性別" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mR3-Mm-M0I">
-                                                <rect key="frame" x="67" y="15" width="22.666666666666671" height="13.333333333333336"/>
+                                                <rect key="frame" x="77" y="15" width="22.666666666666671" height="13.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -204,7 +204,7 @@
                                             <constraint firstItem="egV-r7-Yje" firstAttribute="top" secondItem="QDZ-J6-TE3" secondAttribute="top" constant="8" id="att-Pd-imI"/>
                                             <constraint firstItem="mOT-Kg-CXV" firstAttribute="top" secondItem="ilw-gv-fTD" secondAttribute="bottom" constant="-7" id="cqQ-M9-0Hg"/>
                                             <constraint firstItem="DW7-xt-4bg" firstAttribute="centerY" secondItem="6I9-WV-DjI" secondAttribute="centerY" id="fDo-ky-aZg"/>
-                                            <constraint firstAttribute="trailing" secondItem="DW7-xt-4bg" secondAttribute="trailing" constant="10" id="lys-77-etX"/>
+                                            <constraint firstAttribute="trailing" secondItem="DW7-xt-4bg" secondAttribute="trailing" constant="20" id="lys-77-etX"/>
                                             <constraint firstItem="DW7-xt-4bg" firstAttribute="leading" secondItem="Dap-TB-hJh" secondAttribute="trailing" constant="10" id="oGu-w1-6ov"/>
                                             <constraint firstItem="O4b-pT-Ulw" firstAttribute="centerX" secondItem="egV-r7-Yje" secondAttribute="centerX" id="oVp-dP-QBv"/>
                                             <constraint firstItem="O4b-pT-Ulw" firstAttribute="top" secondItem="egV-r7-Yje" secondAttribute="bottom" constant="-5" id="p9X-7R-eOB"/>
@@ -212,7 +212,7 @@
                                             <constraint firstItem="DW7-xt-4bg" firstAttribute="top" secondItem="QDZ-J6-TE3" secondAttribute="top" constant="8" id="qF0-uW-oHo"/>
                                             <constraint firstItem="ey7-zV-wZm" firstAttribute="top" secondItem="DW7-xt-4bg" secondAttribute="bottom" constant="-7" id="u2N-nh-5cw"/>
                                             <constraint firstItem="ey7-zV-wZm" firstAttribute="centerY" secondItem="Dap-TB-hJh" secondAttribute="centerY" id="ueX-gA-LmY"/>
-                                            <constraint firstItem="ilw-gv-fTD" firstAttribute="leading" secondItem="QDZ-J6-TE3" secondAttribute="leading" constant="10" id="xEM-tA-YIx"/>
+                                            <constraint firstItem="ilw-gv-fTD" firstAttribute="leading" secondItem="QDZ-J6-TE3" secondAttribute="leading" constant="20" id="xEM-tA-YIx"/>
                                             <constraint firstItem="RJp-I5-A5u" firstAttribute="centerY" secondItem="ilw-gv-fTD" secondAttribute="centerY" id="xYd-lZ-2K3"/>
                                         </constraints>
                                     </view>
