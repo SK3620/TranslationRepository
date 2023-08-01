@@ -63,7 +63,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
     //    APIから取得したデータをJSONで受け取って、swiftで使えれるようにCodableで構造体に変換します。
 
-    private let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag() // ゴミ箱を設置したイメージ
 
     struct DeepLResult: Codable {
         let translations: [Translation]
@@ -304,7 +304,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         //             self.translateEnglish()
         //         }
     }
-    
+
     // RXSwiftなしで英語に訳してみる
     private func translateEnglish() {
         self.translateButton.isEnabled = false
@@ -390,7 +390,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                     do {
                         let result = try JSONDecoder().decode(DeepLResult.self, from: data)
                         observer.onNext(result) // 非同期処理の結果を通知
-                        observer.onCompleted() // 非同期処理の完了を通知 (購読が解除される)
+                        observer.onCompleted() // 非同期処理の完了を通知
                     } catch {
                         observer.onError(error) // 非同期処理でのエラーを通知 (購読が解除される)
                     }
@@ -408,8 +408,8 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         translationObservable
             .observe(on: MainScheduler.instance) // UI更新はメインスレッドで行う
             .subscribe(onNext: { [weak self] result in
-                // .subscribeでtranslationObservableストリームの(onNextやonErrorによる)変化を購読（監視）
-                // completedかerrorが流れてくると、購読は解除される
+                // .subscribeでtranslationObservableストリームの(onNextやonErrorによる)変化(イベント)を購読（監視）
+                // completedかerrorが流れてくると、購読は解除される → onDispoed:のクロージャを呼び出す
                 let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
                 self?.translateTextView2.text = text
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -419,9 +419,12 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 debugPrint("APIリクエストエラー: \(error.localizedDescription)")
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }, onDisposed: { [weak self] in
+                // シーケンスが正常に完了した時/エラーが流れてきた時などに実行される処理
                 self?.translateButton.isEnabled = true
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: self.disposeBag) // DisposeBagクラスで購読を一括で廃棄
+        // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付け
+        // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
     }
 
 //    （保存ボタン）保存先▷（フォルダー名）ボタンタップ時
