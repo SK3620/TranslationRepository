@@ -673,9 +673,3 @@ extension TranslateViewController: ContextMenuDelegate {
         print("メニューが閉じました")
     }
 }
-
-extension Disposable {
-    func disposedWithCompletion(by bag: DisposeBag, completion _: () -> Void) {
-        bag.insert(self)
-    }
-}
