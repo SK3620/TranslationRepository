@@ -12,6 +12,7 @@
 		83071D0028B91AC70003734C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83071CFE28B91AC70003734C /* Main.storyboard */; };
 		83071D0228B91AC90003734C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83071D0128B91AC90003734C /* Assets.xcassets */; };
 		83071D0528B91AC90003734C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83071D0328B91AC90003734C /* LaunchScreen.storyboard */; };
+		8308E9062A84CF4300FCF2D3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8308E9052A84CF4300FCF2D3 /* Alamofire */; };
 		830D9FF42912DE2000F8761B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D9FF32912DE2000F8761B /* PostViewController.swift */; };
 		832D4CB028D848B5004C4D7C /* QuickMemoViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D4CAF28D848B5004C4D7C /* QuickMemoViewContoller.swift */; };
 		832D60DD297FE278009F94A8 /* BlockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D60DC297FE278009F94A8 /* BlockListViewController.swift */; };
@@ -130,7 +131,6 @@
 		83D8963729141D9500E570AD /* CustomCellForCommentSetion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8963529141D9500E570AD /* CustomCellForCommentSetion.swift */; };
 		83D8963829141D9500E570AD /* CustomCellForCommentSetion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D8963629141D9500E570AD /* CustomCellForCommentSetion.xib */; };
 		83F021B128C0CC56009FFDD2 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F021B028C0CC56009FFDD2 /* StudyViewController.swift */; };
-		83FAE2672992B2B100C946B4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 83FAE2662992B2B100C946B4 /* Alamofire */; };
 		9AF48952BA317E64709534FE /* Pods_TranslationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7040A0BCD012F1676EB60F /* Pods_TranslationApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -270,8 +270,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8308E9062A84CF4300FCF2D3 /* Alamofire in Frameworks */,
 				83AA2A782966AC3700D95D6E /* MessageUI.framework in Frameworks */,
-				83FAE2672992B2B100C946B4 /* Alamofire in Frameworks */,
 				9AF48952BA317E64709534FE /* Pods_TranslationApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -585,7 +585,7 @@
 				83071CF228B91AC70003734C /* Frameworks */,
 				83071CF328B91AC70003734C /* Resources */,
 				836F9AAA2908D01C00EB9C70 /* ShellScript */,
-				361B4E5E7F5E8B7E46C9D571 /* [CP] Embed Pods Frameworks */,
+				CEECFD250107A347BC2A0E63 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -593,7 +593,7 @@
 			);
 			name = TranslationApp;
 			packageProductDependencies = (
-				83FAE2662992B2B100C946B4 /* Alamofire */,
+				8308E9052A84CF4300FCF2D3 /* Alamofire */,
 			);
 			productName = TranslationApp;
 			productReference = 83071CF528B91AC70003734C /* DeepL保存翻訳.app */;
@@ -722,23 +722,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		361B4E5E7F5E8B7E46C9D571 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TranslationApp/Pods-TranslationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TranslationApp/Pods-TranslationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TranslationApp/Pods-TranslationApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		836F9AAA2908D01C00EB9C70 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -755,6 +738,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "$ Pods/SwiftFormat/CommandLineTool/swiftformat .\n$ Pods/SwiftFormat/CommandLineTool/swiftformat . --self insert\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" . --self insert\n";
+		};
+		CEECFD250107A347BC2A0E63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TranslationApp/Pods-TranslationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TranslationApp/Pods-TranslationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TranslationApp/Pods-TranslationApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1290,7 +1290,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		83FAE2662992B2B100C946B4 /* Alamofire */ = {
+		8308E9052A84CF4300FCF2D3 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 839FBA3C28BA676E00BB64A5 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;

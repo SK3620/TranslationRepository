@@ -6,26 +6,27 @@ target 'TranslationApp' do
   use_frameworks!
 
   # Pods for TranslationApp
-  pod 'RealmSwift', '10.20.0'
-  pod 'SVProgressHUD'
-  pod 'FSCalendar'
-  pod 'CalculateCalendarLogic'
-  pod 'ContextMenuSwift'
-  pod 'SideMenu', '~> 6.0'
-  pod 'Firebase', '8.9.1'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Storage'
-  pod 'FirebaseUI/Storage'
-  pod 'CLImageEditor/AllTools','0.2.4'
-  pod 'SwiftFormat/CLI'
-  pod 'Parchment', '~> 3.0'
-  pod 'MessageKit'
-  pod 'FirebaseDatabase'
-  pod 'RxSwift'
-  pod 'RxCocoa'
-  post_install do |installer|
+pod 'RealmSwift', '10.20.0'
+pod 'SVProgressHUD'
+pod 'FSCalendar'
+pod 'CalculateCalendarLogic'
+pod 'ContextMenuSwift'
+pod 'SideMenu', '~> 6.0'
+pod 'Firebase', '8.9.1'
+pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+pod 'FirebaseUI/Storage'
+pod 'CLImageEditor/AllTools','0.2.4'
+pod 'SwiftFormat/CLI'
+pod 'Parchment', '~> 3.0'
+pod 'MessageKit'
+pod 'FirebaseDatabase'
+pod 'RxSwift'
+pod 'RxCocoa'
+pod 'Charts'
+post_install do |installer|
    installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"

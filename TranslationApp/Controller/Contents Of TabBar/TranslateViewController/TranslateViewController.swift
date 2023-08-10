@@ -423,7 +423,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 self?.translateButton.isEnabled = true
                 print("onDispoed:のクロージャが呼び出された")
             })
-            .disposed(by: self.disposeBag)// DisposeBagクラスで購読を一括で廃棄
+            .disposed(by: self.disposeBag) // DisposeBagクラスで購読を一括で廃棄
         // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付けしただけ
         // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
     }
