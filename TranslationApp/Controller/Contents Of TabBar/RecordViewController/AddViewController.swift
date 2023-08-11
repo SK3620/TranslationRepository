@@ -5,6 +5,7 @@
 //  Created by 鈴木健太 on 2022/09/16.
 //
 
+import Charts
 import RealmSwift
 import SVProgressHUD
 import UIKit
@@ -18,6 +19,8 @@ class AddViewController: UIViewController {
     @IBOutlet private var textView1: UITextView!
 
     @IBOutlet private var label2: UILabel!
+
+    @IBOutlet var pieChartView: PieChartView!
 
     private var pickerView1: UIPickerView = .init()
     private var pickerView3: UIPickerView = .init()
@@ -103,6 +106,39 @@ class AddViewController: UIViewController {
 //    back button
     @objc func tappedLeftBarButtonItem(_: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
+    }
+
+//    making a chart
+    private func settingForChart() {
+        // 円グラフの中心に表示するタイトル
+        self.pieChartView.centerText = "達成率"
+
+        // グラフに表示するデータのタイトルと値
+        let dataEntries = [
+            PieChartDataEntry(value: 40, label: "A"),
+            PieChartDataEntry(value: 35, label: "B"),
+        ]
+
+        let dataSet = PieChartDataSet(entries: dataEntries, label: "達成率")
+
+        // グラフの色
+        dataSet.colors = ChartColorTemplates.vordiplom()
+        // グラフのデータの値の色
+        dataSet.valueTextColor = UIColor.black
+        // グラフのデータのタイトルの色
+        dataSet.entryLabelColor = UIColor.black
+
+        self.pieChartView.data = PieChartData(dataSet: dataSet)
+
+        // データを％表示にする
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 2
+        formatter.multiplier = 1.0
+        self.pieChartView.data?.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+        self.pieChartView.usePercentValuesEnabled = true
+
+        view.addSubview(self.pieChartView)
     }
 
 //    add button    wrtie the added data to realm database (Record class)

@@ -7,6 +7,4 @@
 
 import UIKit
 
-class VoiceTubeViewController: UIViewController {
-    
-}
+class VoiceTubeViewController: UIViewController {}

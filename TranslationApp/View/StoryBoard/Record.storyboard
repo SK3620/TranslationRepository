@@ -69,10 +69,19 @@
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xrM-4E-K7h" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="96.666666666666686" y="519.33333333333337" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="A7w-38-ZEe"/>
+                                    <constraint firstAttribute="height" constant="200" id="uLF-NZ-Kcw"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9yi-iS-oBE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xrM-4E-K7h" firstAttribute="centerX" secondItem="nej-Kl-4E2" secondAttribute="centerX" id="6Qf-tz-fRt"/>
                             <constraint firstItem="0zK-lF-pGV" firstAttribute="top" secondItem="iNW-lK-glG" secondAttribute="bottom" constant="85" id="7iz-Z1-aM3"/>
                             <constraint firstItem="9yi-iS-oBE" firstAttribute="trailing" secondItem="bbV-hp-VCh" secondAttribute="trailing" constant="15" id="HHq-fD-pkB"/>
                             <constraint firstItem="Mld-Ph-Rb0" firstAttribute="top" secondItem="bbV-hp-VCh" secondAttribute="bottom" constant="10" id="IAV-XH-wg0"/>
@@ -83,12 +92,14 @@
                             <constraint firstItem="bbV-hp-VCh" firstAttribute="top" secondItem="9yi-iS-oBE" secondAttribute="top" constant="15" id="mzl-dH-YBH"/>
                             <constraint firstItem="Mld-Ph-Rb0" firstAttribute="leading" secondItem="9yi-iS-oBE" secondAttribute="leading" constant="15" id="q8z-uN-XIb"/>
                             <constraint firstItem="iNW-lK-glG" firstAttribute="top" secondItem="Mld-Ph-Rb0" secondAttribute="bottom" constant="10" id="qc4-tm-Kv6"/>
+                            <constraint firstItem="xrM-4E-K7h" firstAttribute="top" secondItem="0zK-lF-pGV" secondAttribute="bottom" constant="10" id="ySq-Ml-l6i"/>
                             <constraint firstItem="9yi-iS-oBE" firstAttribute="trailing" secondItem="0zK-lF-pGV" secondAttribute="trailing" constant="15" id="ydZ-IW-7va"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QrG-ie-C9n"/>
                     <connections>
                         <outlet property="label2" destination="0zK-lF-pGV" id="rfA-Qy-aEe"/>
+                        <outlet property="pieChartView" destination="xrM-4E-K7h" id="9KN-ej-cFU"/>
                         <outlet property="textField1" destination="tBU-PU-mDf" id="dUY-hz-189"/>
                         <outlet property="textField2" destination="6ec-RG-lqw" id="vSK-dm-V0N"/>
                         <outlet property="textField3" destination="kt2-Nq-UHK" id="JId-Jt-1W8"/>
@@ -98,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nec-U5-toW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6126" y="3650"/>
+            <point key="canvasLocation" x="6125.9541984732823" y="3650"/>
         </scene>
         <!--Edit Record View Controller-->
         <scene sceneID="tmn-6F-e3x">
