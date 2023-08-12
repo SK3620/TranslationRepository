@@ -57,14 +57,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     private var talker = AVSpeechSynthesizer()
 
     let decoder: JSONDecoder = .init()
-    // DeepL APIのレスポンス用構造体
-    //    Codableとは、API通信等で取得したJSONやプロパティリストを任意のデータ型に変換するプロトコル →データをアプリを実装しやすいデータ型に変換することで処理が楽になる
-    //    データ型とは要は、StringやIntのこと　swiftで扱えるようにする
-
-    //    APIから取得したデータをJSONで受け取って、swiftで使えれるようにCodableで構造体に変換します。
-
+    
     private let disposeBag = DisposeBag() // ゴミ箱を設置したイメージ
 
+    // Codable → API通信で取得したJSONデータをswiftで扱えるようデータ型に変換 → swift用のstructを構築
+    // Encodable → DeepLResultをJSONにしたい時に使用
     struct DeepLResult: Codable {
         let translations: [Translation]
 
@@ -327,8 +324,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             "Content-Type": "application/x-www-form-urlencoded",
         ]
 
-        // DeepL APIリクエストを実行　Almofireはapi情報を取得するための便利なライブラリ　通常はswift側で用意されているURLSessionを使う。
-        //        requestメソッドでAPIを呼ぶ
+        //　Almofire → API情報を取得するための便利なライブラリ　swiftで用意されているURLSessionもある
         // リクエスト成功か判定　encoder: URLEncodedFormParameterEncoder.default
         AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
             //            print("エラー？")
@@ -341,10 +337,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             //            }
             if case .success = response.result {
                 do {
-                    // 結果をデコード
-                    //                    一般的に、アプリがAPIサーバーと通信する場合、データはJSON形式でやりとりすることが多い。Foundationフレームワークの JSONEncoder クラスを使用すると、Swiftの値をJSONに変換することができ、JSONDecoder クラスはJSONをSwiftの値にデコードすることができます
+                    // JSONデータを指定した型にデコード
+                    // DeepLResult.self → DeeplResult型そのものを取得　→ プロパティやメソッドにアクセス可能/インスタンス作成可能
                     let result = try self.decoder.decode(DeepLResult.self, from: response.data!)
-                    // 結果のテキストを取得&画面に反映
                     let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
                     self.translateTextView2.text = text
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
