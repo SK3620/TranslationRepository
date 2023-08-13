@@ -336,6 +336,8 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             //                print("error:\(error)")
             //            }
             if case .success = response.result {
+                // do節でエラー返ってくる可能性のあるメソッドを書く → .decodeでthrowsが使用されてる
+                // エラー返ってくる可能性 → tryを使用
                 do {
                     // JSONデータを指定した型にデコード
                     // DeepLResult.self → DeeplResult型そのものを取得　→ プロパティやメソッドにアクセス可能/インスタンス作成可能
@@ -345,6 +347,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                     SVProgressHUD.showSuccess(withStatus: "翻訳完了")
                     SVProgressHUD.dismiss(withDelay: 1.5)
+                    //エラーが発生した場合
                 } catch {
                     debugPrint("デコード失敗")
                     SVProgressHUD.showError(withStatus: "翻訳できませんでした")
