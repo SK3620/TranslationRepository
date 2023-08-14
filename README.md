@@ -47,18 +47,17 @@ Visual Studio Code (コードエディタ)
 SourceTree  
 # Demo Video  
 The first demo video includes the feature to save the sentences to be translated and the translation results, the listening feature and other features.↓  
+（最初のデモビデオには、翻訳する文章と翻訳結果を保存する機能、リスニング機能などが含まれる。）  
 
-https://user-images.githubusercontent.com/108386527/216686295-47ff6f71-2e1e-4737-a244-7cdbf178ae4f.mp4　　
+https://github.com/SK3620/TranslationRepository/assets/108386527/bd773c16-cc5b-470a-98a3-9bede4fa38a2  
 
-The second demo video includes the feature to add words and phrases to user’s favorites.↓  
+The second demo video includes the study record feature.↓  
+（二つ目のデモビデオには、学習記録機能が含まれる。）  
 
-https://user-images.githubusercontent.com/108386527/216684549-b7db42b4-60ab-450d-acd3-16b9f31f0367.mp4　　
+https://github.com/SK3620/TranslationRepository/assets/108386527/86dcd168-2c8c-439e-bcdf-84072e2722bb  
 
-The third demo video includes the study record feature.↓  
-
-https://user-images.githubusercontent.com/108386527/216684356-0ced6358-19c8-4e5b-913f-64859d738a22.mp4　　
-
-The fourth demo video includes the simple SNS feature like Twitter. It has posting, commenting, liking, bookmarking, chatting, reporting, blocking feature, etc.↓  
+The third demo video includes the simple SNS feature like Twitter. It has posting, commenting, liking, bookmarking, chatting, reporting, blocking feature, etc.↓  
+（3つ目のデモ動画は、TwitterのようなシンプルなSNS機能。投稿、コメント、いいね！、ブックマーク、チャット、通報、ブロック機能などがあります。）  
 
 https://user-images.githubusercontent.com/108386527/216686680-a577e982-f68e-4736-88d7-9c1342074929.mp4  
 # Overall issues, points to be corrected, future measures about this app for users (Japanese) 
