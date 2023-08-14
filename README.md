@@ -49,14 +49,14 @@ SourceTree
 The first demo video includes the feature to save the sentences to be translated and the translation results, the listening feature and other features.↓  
 （最初のデモビデオには、翻訳する文章と翻訳結果を保存する機能、リスニング機能などが含まれる。）  
 
-https://github.com/SK3620/TranslationRepository/assets/108386527/bd773c16-cc5b-470a-98a3-9bede4fa38a2  
+https://github.com/SK3620/TranslationRepository/assets/108386527/8479c79d-cea1-4e72-976c-178b83cb9ab3  
 
 The second demo video includes the study record feature.↓  
 （二つ目のデモビデオには、学習記録機能が含まれる。）  
 
 https://github.com/SK3620/TranslationRepository/assets/108386527/86dcd168-2c8c-439e-bcdf-84072e2722bb  
 
-The third demo video includes the simple SNS feature like Twitter. It has posting, commenting, liking, bookmarking, chatting, reporting, blocking feature, etc.↓  
+The third demo video includes a simple SNS feature like Twitter. It has posting, commenting, liking, bookmarking, chatting, reporting, blocking feature, etc.↓  
 （3つ目のデモ動画は、TwitterのようなシンプルなSNS機能。投稿、コメント、いいね！、ブックマーク、チャット、通報、ブロック機能などがあります。）  
 
 https://user-images.githubusercontent.com/108386527/216686680-a577e982-f68e-4736-88d7-9c1342074929.mp4  
