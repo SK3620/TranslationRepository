@@ -103,6 +103,8 @@ Struct updateData {
               FirebaseDatabaseへのデータ更新処理  
      }  
 }*  
+  
+  MVVMアーキテクチャに基づいたコーディングをする。  
 ##### 課題4  
 一つのstoryBoardに含まれるviewControllerの数が少し多すぎるため、複数人による開発の際、互いにstoryboardをいじるとコンフリクトが生じる可能性がある。  
 ##### 解決策  
