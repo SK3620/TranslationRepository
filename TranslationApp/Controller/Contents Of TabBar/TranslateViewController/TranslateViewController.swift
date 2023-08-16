@@ -295,10 +295,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     private func translateEnglish() {
         self.translateButton.isEnabled = false
         SVProgressHUD.show(withStatus: "翻訳中")
-        let authKey1 = KeyManager().getValue(key: "apiKey") as! String
+        var authKey = KeyManager().getValue(key: "apiKey") as! String
 
         //            前後のスペースと改行を削除
-        let authKey = authKey1.trimmingCharacters(in: .newlines)
+        authKey = authKey.trimmingCharacters(in: .newlines)
 
         // APIリクエストするパラメータを作成　リクエストするために必要な情報を定義　リクエスト成功時に、翻訳結果が返される
         let parameters: [String: String] = [
@@ -331,8 +331,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 // エラー返ってくる可能性 → tryを使用
                 do {
                     // JSONデータを指定した型にデコード
+                    // APIから取得したJSON翻訳結果をデコードし、DeeplResult型のデータを生成
                     // DeepLResult.self → DeeplResult型そのものを取得　→ プロパティやメソッドにアクセス可能/インスタンス作成可能
-                    let result = try self.decoder.decode(DeepLResult.self, from: response.data!)
+                    let result: DeepLResult = try self.decoder.decode(DeepLResult.self, from: response.data!)
                     let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
                     self.translateTextView2.text = text
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -356,9 +357,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         self.translateButton.isEnabled = false
         SVProgressHUD.show(withStatus: "翻訳中...")
 
-        let authKey1 = KeyManager().getValue(key: "apiKey") as! String
+        var authKey = KeyManager().getValue(key: "apiKey") as! String
 
-        let authKey = authKey1.trimmingCharacters(in: .newlines)
+        authKey = authKey.trimmingCharacters(in: .newlines)
 
         let parameters: [String: String] = [
             "text": translateTextView1.text,
@@ -371,15 +372,15 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             "Content-Type": "application/x-www-form-urlencoded",
         ]
 
-        // .createメソッドで独自のObservable（イベントストリーム）を作成
+        // .createメソッドで、独自のDeepLResultという型の結果を非同期に取得するストリームを作成
         let translationObservable = Observable<DeepLResult>.create { observer in
             // この"observer"は.onNextや.onErrorなどのメソッドを使用して、仲介役として非同期処理の結果やエラーなどを、作成した独自のObservable（イベントストリーム）に通知
             let request = AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
                 if case .success = response.result, let data = response.data {
                     do {
-                        let result = try JSONDecoder().decode(DeepLResult.self, from: data)
-                        observer.onNext(result) // 非同期処理の結果を通知
-                        observer.onCompleted() // 非同期処理の完了を通知
+                        let result: DeepLResult = try JSONDecoder().decode(DeepLResult.self, from: data)
+                        observer.onNext(result) // 非同期処理の結果（イベント情報）をObservable<DeepLResult>というストリームに流す
+                        observer.onCompleted() // 非同期処理の完了を通知/ストリームに流す
                     } catch {
                         observer.onError(error) // 非同期処理でのエラーを通知 (購読が解除される)
                     }

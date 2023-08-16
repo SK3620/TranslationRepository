@@ -131,6 +131,7 @@
 		83D896342914190500E570AD /* InputCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D896332914190500E570AD /* InputCommentViewController.swift */; };
 		83D8963729141D9500E570AD /* CustomCellForCommentSetion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D8963529141D9500E570AD /* CustomCellForCommentSetion.swift */; };
 		83D8963829141D9500E570AD /* CustomCellForCommentSetion.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83D8963629141D9500E570AD /* CustomCellForCommentSetion.xib */; };
+		83EBBAD22A8CC874007EB9F2 /* TranslateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83EBBAD12A8CC874007EB9F2 /* TranslateViewModel.swift */; };
 		83F021B128C0CC56009FFDD2 /* StudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F021B028C0CC56009FFDD2 /* StudyViewController.swift */; };
 		9AF48952BA317E64709534FE /* Pods_TranslationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7040A0BCD012F1676EB60F /* Pods_TranslationApp.framework */; };
 /* End PBXBuildFile section */
@@ -264,6 +265,7 @@
 		83D896332914190500E570AD /* InputCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCommentViewController.swift; sourceTree = "<group>"; };
 		83D8963529141D9500E570AD /* CustomCellForCommentSetion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellForCommentSetion.swift; sourceTree = "<group>"; };
 		83D8963629141D9500E570AD /* CustomCellForCommentSetion.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellForCommentSetion.xib; sourceTree = "<group>"; };
+		83EBBAD12A8CC874007EB9F2 /* TranslateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewModel.swift; sourceTree = "<group>"; };
 		83F021B028C0CC56009FFDD2 /* StudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -316,6 +318,7 @@
 				83071D0628B91AC90003734C /* Info.plist */,
 				83BD2B8929730D960090B02E /* APIKey.plist */,
 				83BD2B8D2973127E0090B02E /* GoogleService-Info.plist */,
+				83EBBAD02A8CC841007EB9F2 /* ViewModel */,
 				8356E94F29046E4100FD9236 /* Model */,
 				8356E95029046E7000FD9236 /* View */,
 				8356E9522904708C00FD9236 /* Controller */,
@@ -565,6 +568,14 @@
 				83D3D067298FC3D400C1781C /* InputComment.storyboard */,
 			);
 			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		83EBBAD02A8CC841007EB9F2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				83EBBAD12A8CC874007EB9F2 /* TranslateViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		C1EE7F81A77D0C5F9E5E2A03 /* Pods */ = {
@@ -850,6 +861,7 @@
 				83C2CC9F291D1CA400A671AE /* GrammerViewController.swift in Sources */,
 				83C2CC9B291D1BF600A671AE /* HowToLearnViewController.swift in Sources */,
 				8385EA14295476110034E0F6 /* ProfileData.swift in Sources */,
+				83EBBAD22A8CC874007EB9F2 /* TranslateViewModel.swift in Sources */,
 				83862E3A297D22580032E05B /* TermsOfServiceViewController.swift in Sources */,
 				83CCFFA7298A0C6A0030BC9C /* GetDocuments.swift in Sources */,
 				83B9C1FB28CFF10B006138E2 /* CustomCellForHistory.swift in Sources */,
