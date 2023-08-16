@@ -34,6 +34,7 @@
 		837A82FA298BAA6C001049D4 /* DeleteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A82F9298BAA6C001049D4 /* DeleteData.swift */; };
 		837A82FC298C0644001049D4 /* WritingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A82FB298C0644001049D4 /* WritingData.swift */; };
 		837A82FE298C0C18001049D4 /* UpdateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A82FD298C0C18001049D4 /* UpdateData.swift */; };
+		837B2ACE2A8CBDF00076D51C /* DeeplResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837B2ACD2A8CBDF00076D51C /* DeeplResult.swift */; };
 		837BB0EB2939B02100648011 /* AllPhraseWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837BB0EA2939B02000648011 /* AllPhraseWordViewController.swift */; };
 		837CD1B328BE264F00823D17 /* TranslationFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CD1B228BE264F00823D17 /* TranslationFolder.swift */; };
 		837D41E929150F4C00A80342 /* SecondPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837D41E829150F4C00A80342 /* SecondPostData.swift */; };
@@ -166,6 +167,7 @@
 		837A82F9298BAA6C001049D4 /* DeleteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteData.swift; sourceTree = "<group>"; };
 		837A82FB298C0644001049D4 /* WritingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritingData.swift; sourceTree = "<group>"; };
 		837A82FD298C0C18001049D4 /* UpdateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateData.swift; sourceTree = "<group>"; };
+		837B2ACD2A8CBDF00076D51C /* DeeplResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplResult.swift; sourceTree = "<group>"; };
 		837BB0EA2939B02000648011 /* AllPhraseWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPhraseWordViewController.swift; sourceTree = "<group>"; };
 		837CD1B228BE264F00823D17 /* TranslationFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationFolder.swift; sourceTree = "<group>"; };
 		837D41E829150F4C00A80342 /* SecondPostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPostData.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 		8356E94F29046E4100FD9236 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				837B2ACD2A8CBDF00076D51C /* DeeplResult.swift */,
 				8356E95829055BCC00FD9236 /* PhraseWord.swift */,
 				837CD1B228BE264F00823D17 /* TranslationFolder.swift */,
 				8356E9542905574500FD9236 /* History.swift */,
@@ -776,6 +779,7 @@
 				8385E7302918D14300DBDBAC /* OthersPostsHistoryViewController.swift in Sources */,
 				8356E9572905584500FD9236 /* Record.swift in Sources */,
 				83BC07F2291B8520001FFE61 /* OthersBookMarkCommentsSectionViewController.swift in Sources */,
+				837B2ACE2A8CBDF00076D51C /* DeeplResult.swift in Sources */,
 				83975FE52941DFEE00852A58 /* OthersPostedCommentsHistoryViewController.swift in Sources */,
 				83966BF728E8C1060098A39E /* CustomCellForStudy.swift in Sources */,
 				8356E95C2906407500FD9236 /* FirstMemo.swift in Sources */,

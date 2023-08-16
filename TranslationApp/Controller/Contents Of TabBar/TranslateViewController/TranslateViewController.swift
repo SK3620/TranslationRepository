@@ -60,17 +60,6 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     
     private let disposeBag = DisposeBag() // ゴミ箱を設置したイメージ
 
-    // Codable → API通信で取得したJSONデータをswiftで扱えるようデータ型に変換 → swift用のstructを構築
-    // Encodable → DeepLResultをJSONにしたい時に使用
-    struct DeepLResult: Codable {
-        let translations: [Translation]
-
-        struct Translation: Codable {
-            var detected_source_language: String
-            var text: String
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -327,14 +316,16 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         //　Almofire → API情報を取得するための便利なライブラリ　swiftで用意されているURLSessionもある
         // リクエスト成功か判定　encoder: URLEncodedFormParameterEncoder.default
         AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
-            //            print("エラー？")
-            //            print("Reponse: \(response)")
-            //            switch response.result {
-            //            case let .success(data):
-            //                print("url:\(data)")
-            //            case let .failure(error):
-            //                print("error:\(error)")
-            //            }
+            /* switch構文の場合
+            switch response.result {
+            case let .success(data):
+                print("url:\(data)")
+            case let .failure(error):
+                print("error:\(error)")
+            }
+            */
+            
+            // if case構文の場合
             if case .success = response.result {
                 // do節でエラー返ってくる可能性のあるメソッドを書く → .decodeでthrowsが使用されてる
                 // エラー返ってくる可能性 → tryを使用
