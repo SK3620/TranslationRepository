@@ -241,6 +241,27 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             self.saveButton.isHidden = true
         }
     }
+    
+    private func bindViewModelForTranslationProcess(){
+        self.translateButton.rx.tap.subscribe { _ in
+            //        何も入力がなかった場合returnする
+            if self.translateTextView1.text == "" {
+                SVProgressHUD.show()
+                SVProgressHUD.showError(withStatus: "テキストを入力して、翻訳して下さい")
+                SVProgressHUD.dismiss(withDelay: 1.5)
+                return
+            }
+
+            if self.languageLabel1.text == "Japanese" {
+                //        Japanese → English の場合
+                self.translateJapaneseWithRxSwift()
+            } else {
+                //        English → Japanese
+                self.translateEnglish()
+            }
+        }
+        .disposed(by: self.disposeBag)
+    }
 
     //    翻訳ボタン押下時
     @IBAction func translateButton(_: Any) {
@@ -252,14 +273,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             return
         }
 
-        //        Japanese → English の場合
         if self.languageLabel1.text == "Japanese" {
-            //        日本語から英語に訳す処理
-            //        self.translateJapanese()
+            //        Japanese → English の場合
             self.translateJapaneseWithRxSwift()
         } else {
-            //        English → Japanese の場合
-            //        英語から日本語に訳す処理
+            //        English → Japanese
             self.translateEnglish()
         }
     }
@@ -283,12 +301,6 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         } else {
             self.label1.text = "ドラマや映画のフレーズや単語、自英作文などを入力して作成したフォルダーに保存しよう！"
         }
-
-        //         if self.languageLabel1.text == "Japanese" {
-        //             self.translateJapanese()
-        //         } else {
-        //             self.translateEnglish()
-        //         }
     }
 
     // RXSwiftなしで英語に訳してみる
@@ -417,7 +429,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付けしただけ
         // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
     }
-
+    
 //    （保存ボタン）保存先▷（フォルダー名）ボタンタップ時
     @IBAction func SaveButton(_: Any) {
         // どっちも、または、どちらかのtextViewが空の場合、return
