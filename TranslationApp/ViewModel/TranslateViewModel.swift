@@ -29,7 +29,7 @@ class TranslateViewModel {
         ]
         
         // .createメソッドで、独自のDeepLResultという型の結果を非同期に取得するストリームを作成
-        let translationObservable = Observable<DeepLResult>.create { observer in
+        let deeplResultObservable: Observable<DeepLResult> = Observable<DeepLResult>.create { observer in
             // この"observer"は.onNextや.onErrorなどのメソッドを使用して、仲介役として非同期処理の結果やエラーなどを、作成した独自のObservable<DeepLResult>ストリームに通知
             let request = AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
                 if case .success = response.result, let data = response.data {
@@ -47,10 +47,10 @@ class TranslateViewModel {
 
             return Disposables.create {
                 // 購読解除後の処理
-                request.cancel() // translationObservableの終了後、不要なネットワークリクエストを行わないようにする
+                request.cancel() // deeplResultObservableの終了後、不要なネットワークリクエストを行わないようにする
             }
         }
         
-        return translationObservable
+        return deeplResultObservable
     }
 }

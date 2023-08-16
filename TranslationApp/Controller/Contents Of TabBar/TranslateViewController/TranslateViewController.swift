@@ -55,8 +55,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     private var shouldSpeakWhenTappedVolumeButton2: Bool!
 
     private var talker = AVSpeechSynthesizer()
+    
+    private let translationViewModel = TranslateViewModel()
 
-    let decoder: JSONDecoder = .init()
+    private let decoder: JSONDecoder = .init()
     
     private let disposeBag = DisposeBag() // ゴミ箱を設置したイメージ
 
@@ -242,7 +244,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private func bindViewModelForTranslationProcess(){
+    private func observeTranslateButtonTapEvent(){
         self.translateButton.rx.tap.subscribe { _ in
             //        何も入力がなかった場合returnする
             if self.translateTextView1.text == "" {
@@ -254,13 +256,40 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
             if self.languageLabel1.text == "Japanese" {
                 //        Japanese → English の場合
-                self.translateJapaneseWithRxSwift()
+                // self.translateJapaneseWithRxSwift()
+                self.bindViewModelForTranslation()
             } else {
                 //        English → Japanese
                 self.translateEnglish()
             }
         }
         .disposed(by: self.disposeBag)
+    }
+    
+    // deeplResultObservableストリームを購読（監視) / 翻訳結果をUIに反映
+    private func bindViewModelForTranslation(){
+        // TranslateViewModelにあるAPIリクエストを含むメソッドを呼ぶ(translateText(text: String))
+        let deeplResultObservable: Observable<DeepLResult> = self.translationViewModel.translateText(text: self.translateTextView1.text)
+        deeplResultObservable.observe(on: MainScheduler.instance) // UI更新はメインスレッドで行う
+            .subscribe(onNext: { [weak self] result in
+                // .subscribeでtranslationObservableストリームの(onNextやonErrorによる)変化(イベント)を購読（監視）
+                // completedかerrorが流れてくると、購読は解除される → onDispoed:のクロージャを呼び出す
+                let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
+                self?.translateTextView2.text = text
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                SVProgressHUD.showSuccess(withStatus: "翻訳完了")
+                SVProgressHUD.dismiss(withDelay: 1.5)
+            }, onError: { error in
+                debugPrint("APIリクエストエラー: \(error.localizedDescription)")
+                SVProgressHUD.showError(withStatus: "翻訳できませんでした")
+            }, onDisposed: { [weak self] in
+                // シーケンスが正常に完了した時/エラーが流れてきた時などに実行される処理
+                self?.translateButton.isEnabled = true
+                print("onDispoed:のクロージャが呼び出された")
+            })
+            .disposed(by: self.disposeBag) // DisposeBagクラスで購読を一括で廃棄
+        // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付けしただけ
+        // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
     }
 
     //    翻訳ボタン押下時
