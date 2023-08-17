@@ -57,7 +57,7 @@ The second demo video includes the study record feature.↓
 https://github.com/SK3620/TranslationRepository/assets/108386527/86dcd168-2c8c-439e-bcdf-84072e2722bb  
 
 The third demo video includes a simple SNS feature like Twitter. It has posting, commenting, liking, bookmarking, chatting, reporting, blocking feature, etc.↓  
-（3つ目のデモ動画は、TwitterのようなシンプルなSNS機能。投稿、コメント、いいね！、ブックマーク、チャット、通報、ブロック機能などがあります。）  
+（3つ目のデモビデオには、TwitterのようなシンプルなSNS機能。投稿、コメント、いいね！、ブックマーク、チャット、通報、ブロック機能などが含まれる。）  
 
 https://user-images.githubusercontent.com/108386527/216686680-a577e982-f68e-4736-88d7-9c1342074929.mp4  
 # Overall issues, points to be corrected, future measures about this app for users (Japanese) 
@@ -104,7 +104,7 @@ Struct updateData {
      }  
 }*  
   
-  MVVMアーキテクチャに基づいたコーディングをする。  
+MVVM/MVCアーキテクチャに基づいたコーディングをする。  
 ##### 課題4  
 一つのstoryBoardに含まれるviewControllerの数が少し多すぎるため、複数人による開発の際、互いにstoryboardをいじるとコンフリクトが生じる可能性がある。  
 ##### 解決策  
