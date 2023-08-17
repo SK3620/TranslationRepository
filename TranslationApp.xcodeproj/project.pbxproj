@@ -338,7 +338,6 @@
 				8356E95D290642D800FD9236 /* Speak.swift */,
 				839FBA3A28BA602700BB64A5 /* KeyManager.swift */,
 				83920AA1290BA6FB00F1F2D6 /* FireBaseRelatedPath.swift */,
-				8387FD602999FB1C00A77BAF /* ManipulateDataViaFirebase */,
 				83C2921A29137FF000386EE9 /* PostData.swift */,
 				837D41E829150F4C00A80342 /* SecondPostData.swift */,
 				8385EA13295476110034E0F6 /* ProfileData.swift */,
@@ -574,6 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				83EBBAD12A8CC874007EB9F2 /* TranslateViewModel.swift */,
+				8387FD602999FB1C00A77BAF /* ManipulateDataViaFirebase */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
