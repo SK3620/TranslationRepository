@@ -87,9 +87,6 @@
                                         <buttonConfiguration key="configuration" style="plain" title="翻　訳">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="17"/>
                                         </buttonConfiguration>
-                                        <connections>
-                                            <action selector="translateButton:" destination="Pbn-pb-T9g" eventType="touchUpInside" id="e4Z-1o-0ij"/>
-                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vp1-lh-siV">
                                         <rect key="frame" x="-2" y="405" width="367" height="314"/>

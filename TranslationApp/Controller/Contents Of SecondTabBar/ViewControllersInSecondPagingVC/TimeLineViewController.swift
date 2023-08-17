@@ -66,11 +66,32 @@ class TimeLineViewController: UIViewController, UITableViewDelegate, UITableView
                 self.postArray = postArray
                 SVProgressHUD.dismiss()
                 self.tableView.reloadData()
-            case let .failure(error):
-                print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error.localizedDescription)")
-                SVProgressHUD.showError(withStatus: "データの取得に失敗しました")
+            case let .failure(getDocumentError):
+                switch getDocumentError {
+                case .cannotFindUser:
+                    print(".connotFindUser:現在のユーザーがいません")
+                case let .querySnapshotError(querySnapshotError):
+                    SVProgressHUD.showError(withStatus: "データの取得に失敗しました")
+                    print(".querySnapshotError DEBUG_PRINT: snapshotの取得が失敗しました" + querySnapshotError.localizedDescription)
+                case .containsBlockedUser:
+                    print(".containsBlockedUser:ブロックしたユーザーが含まれます")
+                }
             }
         }
+
+        /*
+         GetDocument.getDocumentsForTimeline(user: user, topic: nil, listener: self.listener) { result in
+             switch result {
+             case let .success(postArray):
+                 self.postArray = postArray
+                 SVProgressHUD.dismiss()
+                 self.tableView.reloadData()
+             case let .failure(error):
+                 print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error.localizedDescription)")
+                 SVProgressHUD.showError(withStatus: "データの取得に失敗しました")
+             }
+         }
+          */
     }
 
     override func viewWillDisappear(_ animated: Bool) {

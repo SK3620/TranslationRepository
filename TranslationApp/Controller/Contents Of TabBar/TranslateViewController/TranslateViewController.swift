@@ -9,13 +9,15 @@ import Alamofire
 import AVFoundation
 import ContextMenuSwift
 import RealmSwift
+import RxCocoa
+import RxSwift
 import SVProgressHUD
 import UIKit
 
 class TranslateViewController: UIViewController, UITextViewDelegate {
-//    上のtextView
+    //    上のtextView
     @IBOutlet private var translateTextView1: UITextView!
-//    下のtextView
+    //    下のtextView
     @IBOutlet private var translateTextView2: UITextView!
 
     @IBOutlet private var label1: UILabel!
@@ -54,20 +56,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
     private var talker = AVSpeechSynthesizer()
 
-    let decoder: JSONDecoder = .init()
-    // DeepL APIのレスポンス用構造体
-    //    Codableとは、API通信等で取得したJSONやプロパティリストを任意のデータ型に変換するプロトコル →データをアプリを実装しやすいデータ型に変換することで処理が楽になる
-    //    データ型とは要は、StringやIntのこと　swiftで扱えるようにする
+    private let translationViewModel = TranslateViewModel()
 
-    //    APIから取得したデータをJSONで受け取って、swiftで使えれるようにCodableで構造体に変換します。
-    struct DeepLResult: Codable {
-        let translations: [Translation]
+    private let decoder: JSONDecoder = .init()
 
-        struct Translation: Codable {
-            var detected_source_language: String
-            var text: String
-        }
-    }
+    private let disposeBag = DisposeBag() // ゴミ箱を設置したイメージ
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,26 +70,29 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
         self.translateTextView1.delegate = self
 
-//        translateTextView2（下のtextView）タップして、viewをキーボードの高さ分あげるためのNotificationCenter
+        // RxSwiftで翻訳ボタン押下イベントを監視
+        self.observeTranslateButtonTapEvent()
+
+        //        translateTextView2（下のtextView）タップして、viewをキーボードの高さ分あげるためのNotificationCenter
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-//        textViewとviewのデザイン設定
+        //        textViewとviewのデザイン設定
         self.setTranslateTextViewAndView()
 
-//        右下の保存先選択ボタンのデザイン設定
+        //        右下の保存先選択ボタンのデザイン設定
         self.setButtonDesign1(button: [self.selectFolderButton], pointSize: 18, weight: .medium, scale: .medium, systemName: ["square.and.arrow.down"], borderWidth: 1, borderColor: UIColor.systemBlue.cgColor, cornerRadius: 10)
 
-//        ボタンを格納して、それぞれボタンにデザイン設定
+        //        ボタンを格納して、それぞれボタンにデザイン設定
         let buttonArr1: [UIButton]! = [copyButton1, copyButton2, volumeButton1, volumeButton2, deleteTextButton1, deleteTextButton2]
         let systemNameArr = ["doc.on.doc", "doc.on.doc", "volume.3", "volume.3", "delete.left", "delete.left"]
         self.setButtonDesign1(button: buttonArr1, pointSize: 20, weight: .regular, scale: .small, systemName: systemNameArr, borderWidth: nil, borderColor: nil, cornerRadius: nil)
 
-//        ボタンを格納して、それぞれのボタンにデザイン設定
+        //        ボタンを格納して、それぞれのボタンにデザイン設定
         let buttonArr2: [UIButton]! = [self.changeLanguageButton, self.saveButton, self.translateButton]
         self.setButtonDesign2(button: buttonArr2, borderColor: UIColor.systemBlue.cgColor, borderWidth: 1, cornerRadius: 10)
 
-//        左したに表示される保存ボタンの設定
+        //        左したに表示される保存ボタンの設定
         self.saveButton.isEnabled = false
         self.saveButton.isHidden = true
         self.saveButton.titleLabel?.numberOfLines = 1
@@ -104,7 +100,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         // キーボードに完了のツールバーを作成
         self.setDoneTooBar()
 
-//        TabBarControllerクラスに定義したメソッドにアクセスして、titleに"翻訳"と表示する
+        //        TabBarControllerクラスに定義したメソッドにアクセスして、titleに"翻訳"と表示する
         self.tabBarController1.setStringToNavigationItemTitle0()
         self.tabBarController1.navigationController?.setNavigationBarHidden(false, animated: false)
 
@@ -176,7 +172,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-//    キーボードに完了バー
+    //    キーボードに完了バー
     private func setDoneTooBar() {
         let doneToolbar = UIToolbar()
         doneToolbar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40)
@@ -211,7 +207,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         self.displaySaveButtonWithFolderName()
     }
 
-//    tabBarController1(TabBarControllerクラスのインスタンス)がある場合の処理
+    //    tabBarController1(TabBarControllerクラスのインスタンス)がある場合の処理
     private func setCreateFolderBarButtonItem() {
         if let tabBarController1 = tabBarController1 {
             tabBarController1.setStringToNavigationItemTitle0()
@@ -251,25 +247,27 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-//    翻訳ボタン押下時
-    @IBAction func translateButton(_: Any) {
-        //        何も入力がなかった場合returnする
-        if self.translateTextView1.text == "" {
-            SVProgressHUD.show()
-            SVProgressHUD.showError(withStatus: "テキストを入力して、翻訳して下さい")
-            SVProgressHUD.dismiss(withDelay: 1.5)
-            return
-        }
+    // RxSwiftで翻訳ボタン押下イベントを監視
+    private func observeTranslateButtonTapEvent() {
+        self.translateButton.rx.tap.subscribe { _ in
+            //        何も入力がなかった場合returnする
+            if self.translateTextView1.text == "" {
+                SVProgressHUD.showError(withStatus: "テキストを入力して、翻訳して下さい")
+                SVProgressHUD.dismiss(withDelay: 1.5)
+                return
+            }
 
-        //        Japanese → English の場合
-        if self.languageLabel1.text == "Japanese" {
-            //        日本語から英語に訳す処理
-            self.translateJapanese()
-        } else {
-            //        English → Japanese の場合
-            //        英語から日本語に訳す処理
-            self.translateEnglish()
+            self.translateButton.isEnabled = false
+
+            if self.languageLabel1.text == "Japanese" {
+                //        Japanese → English の場合
+                self.bindViewModelToTranslateJp() // MVVMに基づいてRxSwiftを使用してみた
+            } else {
+                //        English → Japanese
+                self.bindViewModelToTranslateEng()
+            }
         }
+        .disposed(by: self.disposeBag)
     }
 
     @IBAction func changeLanguageButton(_: Any) {
@@ -291,127 +289,58 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         } else {
             self.label1.text = "ドラマや映画のフレーズや単語、自英作文などを入力して作成したフォルダーに保存しよう！"
         }
-
-//         if self.languageLabel1.text == "Japanese" {
-//             self.translateJapanese()
-//         } else {
-//             self.translateEnglish()
-//         }
     }
 
-    // 英語を訳す
-    private func translateEnglish() {
-        self.translateButton.isEnabled = false
-        SVProgressHUD.show(withStatus: "翻訳中")
-        let authKey1 = KeyManager().getValue(key: "apiKey") as! String
+    // RXSwiftなし Result<Success, Failure: Error> + do try catchでやってみる
+    private func bindViewModelToTranslateEng() {
+        self.translationViewModel.translateEngText(text: self.translateTextView1.text) { result in
+            if case let .success(translationResult) = result {
+                let text = translationResult.translations[0].text.trimmingCharacters(in: .whitespaces)
+                self.translateTextView2.text = text
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                SVProgressHUD.showSuccess(withStatus: "翻訳完了")
+                SVProgressHUD.dismiss(withDelay: 1.5)
+            }
 
-        //            前後のスペースと改行を削除
-        let authKey = authKey1.trimmingCharacters(in: .newlines)
-
-        // APIリクエストするパラメータを作成　リクエストするために必要な情報を定義　リクエスト成功時に、翻訳結果が返される
-        let parameters: [String: String] = [
-            "text": translateTextView1.text,
-            "auth_key": authKey,
-            "source_lang": "EN",
-            "target_lang": "JA",
-        ]
-
-        // ヘッダーを作成
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/x-www-form-urlencoded",
-        ]
-
-        // DeepL APIリクエストを実行　Almofireはapi情報を取得するための便利なライブラリ　通常はswift側で用意されているURLSessionを使う。
-        //        requestメソッドでAPIを呼ぶ
-        // リクエスト成功か判定　encoder: URLEncodedFormParameterEncoder.default
-        AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
-//            print("エラー？")
-//            print("Reponse: \(response)")
-//            switch response.result {
-//            case let .success(data):
-//                print("url:\(data)")
-//            case let .failure(error):
-//                print("error:\(error)")
-//            }
-            if case .success = response.result {
-                do {
-                    // 結果をデコード
-                    //                    一般的に、アプリがAPIサーバーと通信する場合、データはJSON形式でやりとりすることが多い。Foundationフレームワークの JSONEncoder クラスを使用すると、Swiftの値をJSONに変換することができ、JSONDecoder クラスはJSONをSwiftの値にデコードすることができます
-                    let result = try self.decoder.decode(DeepLResult.self, from: response.data!)
-                    // 結果のテキストを取得&画面に反映
-                    let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
-                    self.translateTextView2.text = text
-                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                    SVProgressHUD.showSuccess(withStatus: "翻訳完了")
-                    SVProgressHUD.dismiss(withDelay: 1.5)
-                } catch {
-                    debugPrint("デコード失敗")
-                    SVProgressHUD.showError(withStatus: "翻訳できませんでした")
+            if case let .failure(error) = result {
+                switch error {
+                case let .decodeError(decodeError):
+                    print("デコードエラー\(decodeError.localizedDescription)")
+                case let .apiRequestError(apiRequestError, errorMessage):
+                    print(errorMessage + "\(apiRequestError.localizedDescription)")
                 }
-            } else {
-                debugPrint("APIリクエストエラー")
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }
+
             self.translateButton.isEnabled = true
         }
     }
 
-    // 日本語を訳す
-    private func translateJapanese() {
-        self.translateButton.isEnabled = false
-        SVProgressHUD.show(withStatus: "翻訳中...")
-        // APIKey.plistに保存したDeepLの認証キーを取得
-        let authKey1 = KeyManager().getValue(key: "apiKey") as! String
-
-        //            前後のスペースと改行を削除
-        let authKey = authKey1.trimmingCharacters(in: .newlines)
-
-        // APIリクエストするパラメータを作成
-        let parameters: [String: String] = [
-            "text": translateTextView1.text,
-            "auth_key": authKey,
-            "source_lang": "JA",
-            "target_lang": "EN",
-        ]
-
-        // ヘッダーを作成
-        let headers: HTTPHeaders = [
-            "Content-Type": "application/x-www-form-urlencoded",
-        ]
-        // DeepL APIを実行
-        AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
-//                                     リクエスト成功か判定
-//                                print("Reponse: \(response)")
-//                                switch(response.result){
-//                                case .success(let data):
-//                                    print("url:\(data)")
-//                                case .failure(let error):
-//                                    print("error:\(error)")
-//                                }
-//                            }
-//                    }
-//                }
-//             }
-            if case .success = response.result {
-                do {
-                    // 結果をデコード
-                    let result = try self.decoder.decode(DeepLResult.self, from: response.data!)
-                    // 結果のテキストを取得&画面に反映
-                    let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
-                    self.translateTextView2.text = text
-                    UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
-                    SVProgressHUD.showSuccess(withStatus: "翻訳完了")
-                    SVProgressHUD.dismiss(withDelay: 1.5)
-                } catch {
-                    debugPrint("デコード失敗")
-                    SVProgressHUD.showError(withStatus: "翻訳できませんでした")
-                }
-            } else {
-                debugPrint("APIリクエストエラー")
+    // deeplResultObservableストリームを購読（監視) / 翻訳結果をUIに反映
+    private func bindViewModelToTranslateJp() {
+        // TranslateViewModelにあるAPIリクエストを含むメソッドを呼ぶ(translateText(text: String))
+        let deeplResultObservable: Observable<DeepLResult> = self.translationViewModel.translateJpText(text: self.translateTextView1.text)
+        deeplResultObservable.observe(on: MainScheduler.instance) // UI更新はメインスレッドで行う
+            .subscribe(onNext: { [weak self] result in
+                // .subscribeでtranslationObservableストリームの(onNextやonErrorによる)変化(イベント)を購読（監視）
+                // completedかerrorが流れてくると、購読は解除される → onDispoed:のクロージャを呼び出す
+                let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
+                self?.translateTextView2.text = text
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                SVProgressHUD.showSuccess(withStatus: "翻訳完了")
+                SVProgressHUD.dismiss(withDelay: 1.5)
+            }, onError: { error in
+                debugPrint("APIリクエストエラー: \(error.localizedDescription)")
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
-            }
-            self.translateButton.isEnabled = true
-        }
+            }, onDisposed: { [weak self] in
+                // シーケンスが正常に完了した時/エラーが流れてきた時などに実行される処理
+                self?.translateButton.isEnabled = true
+                print("onDispoed:のクロージャが呼び出された")
+            })
+            .disposed(by: self.disposeBag) // DisposeBagクラスで購読を一括で廃棄
+        // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付けしただけ
+        // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
+        self.translateButton.isEnabled = true
     }
 
 //    （保存ボタン）保存先▷（フォルダー名）ボタンタップ時
