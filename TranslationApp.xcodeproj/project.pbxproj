@@ -599,7 +599,7 @@
 				83071CF228B91AC70003734C /* Frameworks */,
 				83071CF328B91AC70003734C /* Resources */,
 				836F9AAA2908D01C00EB9C70 /* ShellScript */,
-				CEECFD250107A347BC2A0E63 /* [CP] Embed Pods Frameworks */,
+				B3759C9D9CCF8301A85D4A6A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -753,7 +753,7 @@
 			shellPath = /bin/sh;
 			shellScript = "$ Pods/SwiftFormat/CommandLineTool/swiftformat .\n$ Pods/SwiftFormat/CommandLineTool/swiftformat . --self insert\n\"${PODS_ROOT}/SwiftFormat/CommandLineTool/swiftformat\" . --self insert\n";
 		};
-		CEECFD250107A347BC2A0E63 /* [CP] Embed Pods Frameworks */ = {
+		B3759C9D9CCF8301A85D4A6A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

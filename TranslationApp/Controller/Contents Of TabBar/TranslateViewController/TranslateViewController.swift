@@ -55,11 +55,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     private var shouldSpeakWhenTappedVolumeButton2: Bool!
 
     private var talker = AVSpeechSynthesizer()
-    
+
     private let translationViewModel = TranslateViewModel()
 
     private let decoder: JSONDecoder = .init()
-    
+
     private let disposeBag = DisposeBag() // ゴミ箱を設置したイメージ
 
     override func viewDidLoad() {
@@ -243,8 +243,8 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
             self.saveButton.isHidden = true
         }
     }
-    
-    private func observeTranslateButtonTapEvent(){
+
+    private func observeTranslateButtonTapEvent() {
         self.translateButton.rx.tap.subscribe { _ in
             //        何も入力がなかった場合returnする
             if self.translateTextView1.text == "" {
@@ -265,9 +265,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
         .disposed(by: self.disposeBag)
     }
-    
+
     // deeplResultObservableストリームを購読（監視) / 翻訳結果をUIに反映
-    private func bindViewModelForTranslation(){
+    private func bindViewModelForTranslation() {
         // TranslateViewModelにあるAPIリクエストを含むメソッドを呼ぶ(translateText(text: String))
         let deeplResultObservable: Observable<DeepLResult> = self.translationViewModel.translateText(text: self.translateTextView1.text)
         deeplResultObservable.observe(on: MainScheduler.instance) // UI更新はメインスレッドで行う
@@ -358,14 +358,14 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         // リクエスト成功か判定　encoder: URLEncodedFormParameterEncoder.default
         AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
             /* switch構文の場合
-            switch response.result {
-            case let .success(data):
-                print("url:\(data)")
-            case let .failure(error):
-                print("error:\(error)")
-            }
-            */
-            
+             switch response.result {
+             case let .success(data):
+                 print("url:\(data)")
+             case let .failure(error):
+                 print("error:\(error)")
+             }
+             */
+
             // if case構文の場合
             if case .success = response.result {
                 // do節でエラー返ってくる可能性のあるメソッドを書く → .decodeでthrowsが使用されてる
@@ -380,7 +380,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                     UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                     SVProgressHUD.showSuccess(withStatus: "翻訳完了")
                     SVProgressHUD.dismiss(withDelay: 1.5)
-                    //エラーが発生した場合
+                    // エラーが発生した場合
                 } catch {
                     debugPrint("デコード失敗")
                     SVProgressHUD.showError(withStatus: "翻訳できませんでした")
@@ -458,7 +458,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付けしただけ
         // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
     }
-    
+
 //    （保存ボタン）保存先▷（フォルダー名）ボタンタップ時
     @IBAction func SaveButton(_: Any) {
         // どっちも、または、どちらかのtextViewが空の場合、return

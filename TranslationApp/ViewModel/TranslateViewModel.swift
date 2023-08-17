@@ -5,31 +5,31 @@
 //  Created by 鈴木健太 on 2023/08/16.
 //
 
+import Alamofire
 import Foundation
 import RxSwift
-import Alamofire
 
 class TranslateViewModel {
     private let disposeBag = DisposeBag()
-    
+
     func translateText(text: String) -> Observable<DeepLResult> {
         var authKey = KeyManager().getValue(key: "apiKey") as! String
-        
+
         authKey = authKey.trimmingCharacters(in: .newlines)
-        
+
         let parameters: [String: String] = [
             "text": text,
             "auth_key": authKey,
             "source_lang": "JA",
             "target_lang": "EN",
         ]
-        
+
         let headers: HTTPHeaders = [
             "Content-Type": "application/x-www-form-urlencoded",
         ]
-        
+
         // .createメソッドで、独自のDeepLResultという型の結果を非同期に取得するストリームを作成
-        let deeplResultObservable: Observable<DeepLResult> = Observable<DeepLResult>.create { observer in
+        let deeplResultObservable = Observable<DeepLResult>.create { observer in
             // この"observer"は.onNextや.onErrorなどのメソッドを使用して、仲介役として非同期処理の結果やエラーなどを、作成した独自のObservable<DeepLResult>ストリームに通知
             let request = AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
                 if case .success = response.result, let data = response.data {
@@ -50,7 +50,7 @@ class TranslateViewModel {
                 request.cancel() // deeplResultObservableの終了後、不要なネットワークリクエストを行わないようにする
             }
         }
-        
+
         return deeplResultObservable
     }
 }
