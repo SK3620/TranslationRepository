@@ -105,6 +105,13 @@ Struct updateData {
 }*  
   
 MVVM/MVCアーキテクチャに基づいたコーディングをする。  
+FireStoreからのデータ取得などの処理で、独自のエラーを定義して、それぞれのエラー用に処理を分ける。  
+*例  
+enum GetDocumentError: Error, String {  
+case cannotFindCurrentUser = "現在のユーザーがありません"  
+case querySnapshotError = "データの取得に失敗しました"  
+case containsBlockedUser = "ブロックしたユーザーが含まれます"  
+}* みたいな感じのErrorプロトコルを準拠した列挙型を作っていく。  
 ##### 課題4  
 一つのstoryBoardに含まれるviewControllerの数が少し多すぎるため、複数人による開発の際、互いにstoryboardをいじるとコンフリクトが生じる可能性がある。  
 ##### 解決策  
@@ -134,7 +141,6 @@ Extension HogeViewController: CustomCellButtonTappedDelegate {}
 4. ネストは深くしすぎない。 深くても２つまで。  
 5. インデントをしっかりつける。  
 6. プログラムは上から下に処理が流れるように記述する。　など  
-
 
 
 
