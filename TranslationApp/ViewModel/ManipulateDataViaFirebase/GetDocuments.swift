@@ -10,7 +10,13 @@ import SVProgressHUD
 import UIKit
 
 struct GetDocument {
-    static func getDocumentsForTimeline(user: User, topic: String?, listener: ListenerRegistration?, completion: @escaping (Result<[PostData], Error>) -> Void) {
+    enum GetDocumentError: Error {
+        case cannotFindUser
+        case querySnapshotError(querySnapshotError: Error)
+        case containsBlockedUser
+    }
+
+    static func getDocumentsForTimeline(user: User, topic: String?, listener: ListenerRegistration?, completion: @escaping (Result<[PostData], GetDocumentError>) -> Void) {
         SVProgressHUD.show(withStatus: "データを取得中...")
         var postsRef: Query
         if let topic = topic {
@@ -22,15 +28,15 @@ struct GetDocument {
         print(listener as Any)
         listener = postsRef.addSnapshotListener { querySnapshot, error in
             guard Auth.auth().currentUser != nil else {
+                completion(.failure(.cannotFindUser))
                 return
             }
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(.querySnapshotError(querySnapshotError: error)))
                 return
             }
             var postArray: [PostData] = []
             if querySnapshot!.documents.isEmpty {
-                print("ドキュメントがありません")
                 completion(.success(postArray))
                 return
             }
@@ -38,7 +44,7 @@ struct GetDocument {
                 print("DEBUG_PRINT: document取得 \(document.documentID)")
                 let postData = PostData(document: document)
                 if postData.blockedBy.contains(user.uid) {
-                    print("ブロックしたユーザーが含まれています")
+                    completion(.failure(.containsBlockedUser))
                     return
                 } else {
                     postArray.append(postData)
