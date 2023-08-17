@@ -291,27 +291,27 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    // RXSwiftなしで英語に訳してみる
+    // RXSwiftなし Result<Success, Failure: Error> + do try catchでやってみる
     private func bindViewModelToTranslateEng() {
         self.translationViewModel.translateEngText(text: self.translateTextView1.text) { result in
-            if case .success(let translationResult) = result {
+            if case let .success(translationResult) = result {
                 let text = translationResult.translations[0].text.trimmingCharacters(in: .whitespaces)
                 self.translateTextView2.text = text
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                 SVProgressHUD.showSuccess(withStatus: "翻訳完了")
                 SVProgressHUD.dismiss(withDelay: 1.5)
             }
-            
-            if case .failure(let error) = result {
+
+            if case let .failure(error) = result {
                 switch error {
-                case .decodeError(let decodeError):
+                case let .decodeError(decodeError):
                     print("デコードエラー\(decodeError.localizedDescription)")
-                case .apiRequestError(let apiRequestError, let errorMessage):
-                    print("APIリクエストエラー\(apiRequestError.localizedDescription)")
+                case let .apiRequestError(apiRequestError, errorMessage):
+                    print(errorMessage + "\(apiRequestError.localizedDescription)")
                 }
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }
-            
+
             self.translateButton.isEnabled = true
         }
     }
