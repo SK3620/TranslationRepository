@@ -300,9 +300,18 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
                 SVProgressHUD.showSuccess(withStatus: "翻訳完了")
                 SVProgressHUD.dismiss(withDelay: 1.5)
-            } else if case .failure = result {
+            }
+            
+            if case .failure(let error) = result {
+                switch error {
+                case .decodeError(let decodeError):
+                    print("デコードエラー\(decodeError.localizedDescription)")
+                case .apiRequestError(let apiRequestError, let errorMessage):
+                    print("APIリクエストエラー\(apiRequestError.localizedDescription)")
+                }
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }
+            
             self.translateButton.isEnabled = true
         }
     }
