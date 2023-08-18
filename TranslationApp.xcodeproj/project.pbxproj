@@ -366,8 +366,8 @@
 				83B9C20028D3050E006138E2 /* CustomCellForRecord.xib */,
 				83B6AF1E28E7254000700DBF /* CustomCellForReview.xib */,
 				83862E36297D183F0032E05B /* CustomCellForTermsOfService.xib */,
-				83071D0128B91AC90003734C /* Assets.xcassets */,
 				837A82FF298C2652001049D4 /* CustomClass */,
+				83071D0128B91AC90003734C /* Assets.xcassets */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,7 +375,6 @@
 		8356E9522904708C00FD9236 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				83AD2C1A290A48AB009B0C84 /* SecondTabBarController.swift */,
 				8389C3F5290A6677007347AE /* Contents Of SecondTabBar */,
 				8356E95F2906467C00FD9236 /* Contents Of TabBar */,
 			);
@@ -532,6 +531,7 @@
 		8389C3F5290A6677007347AE /* Contents Of SecondTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				83AD2C1A290A48AB009B0C84 /* SecondTabBarController.swift */,
 				83920AA3290BB2BE00F1F2D6 /* EditProfileViewController.swift */,
 				8389C3FB290A7C6A007347AE /* LoginViewController.swift */,
 				83862E39297D22580032E05B /* TermsOfServiceViewController.swift */,
