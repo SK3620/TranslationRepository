@@ -16,6 +16,7 @@
 		830D9FF42912DE2000F8761B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830D9FF32912DE2000F8761B /* PostViewController.swift */; };
 		832D4CB028D848B5004C4D7C /* QuickMemoViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D4CAF28D848B5004C4D7C /* QuickMemoViewContoller.swift */; };
 		832D60DD297FE278009F94A8 /* BlockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D60DC297FE278009F94A8 /* BlockListViewController.swift */; };
+		83366B892A97BB6C001BD3C6 /* YouTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83366B882A97BB6C001BD3C6 /* YouTubeViewController.swift */; };
 		83516687299BA11100DB78BE /* SecondMemoForStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83516686299BA11100DB78BE /* SecondMemoForStudyViewController.swift */; };
 		8356E9552905574500FD9236 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8356E9542905574500FD9236 /* History.swift */; };
 		8356E9572905584500FD9236 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8356E9562905584500FD9236 /* Record.swift */; };
@@ -150,6 +151,7 @@
 		830D9FF32912DE2000F8761B /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		832D4CAF28D848B5004C4D7C /* QuickMemoViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickMemoViewContoller.swift; sourceTree = "<group>"; };
 		832D60DC297FE278009F94A8 /* BlockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewController.swift; sourceTree = "<group>"; };
+		83366B882A97BB6C001BD3C6 /* YouTubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
 		83516686299BA11100DB78BE /* SecondMemoForStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondMemoForStudyViewController.swift; sourceTree = "<group>"; };
 		8356E9542905574500FD9236 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		8356E9562905584500FD9236 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			children = (
 				839FBA3028BA0F7000BB64A5 /* TranslateViewController.swift */,
 				83C15AF928BF451F00280694 /* SelectFolderForTranslateViewContoller.swift */,
+				83366B882A97BB6C001BD3C6 /* YouTubeViewController.swift */,
 			);
 			path = TranslateViewController;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				8356E9552905574500FD9236 /* History.swift in Sources */,
 				835B38EC2950070200D42F50 /* ChatList.swift in Sources */,
 				83D896342914190500E570AD /* InputCommentViewController.swift in Sources */,
+				83366B892A97BB6C001BD3C6 /* YouTubeViewController.swift in Sources */,
 				83AD2C1B290A48AB009B0C84 /* SecondTabBarController.swift in Sources */,
 				83A2E1B029019CA100F1117A /* SelectFolderForStudyViewContoller.swift in Sources */,
 				8385EA0E2951858B0034E0F6 /* ChatRoom.swift in Sources */,
