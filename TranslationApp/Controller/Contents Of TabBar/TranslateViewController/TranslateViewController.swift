@@ -56,7 +56,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
     private var talker = AVSpeechSynthesizer()
 
-    private let translationViewModel = TranslateViewModel()
+    private let translateModel = translateModel()
 
     private let decoder: JSONDecoder = .init()
 
@@ -261,10 +261,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
             if self.languageLabel1.text == "Japanese" {
                 //        Japanese → English の場合
-                self.bindViewModelToTranslateJp() // MVVMに基づいてRxSwiftを使用してみた
+                self.bindModelToTranslateJp() // MVCに基づいてRxSwiftを使用してみた
             } else {
                 //        English → Japanese
-                self.bindViewModelToTranslateEng()
+                self.bindModelToTranslateEng()
             }
         }
         .disposed(by: self.disposeBag)
@@ -292,8 +292,8 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     }
 
     // RXSwiftなし Result<Success, Failure: Error> + do try catchでやってみる
-    private func bindViewModelToTranslateEng() {
-        self.translationViewModel.translateEngText(text: self.translateTextView1.text) { result in
+    private func bindModelToTranslateEng() {
+        self.translateModel.translateEngText(text: self.translateTextView1.text) { result in
             if case let .success(translationResult) = result {
                 let text = translationResult.translations[0].text.trimmingCharacters(in: .whitespaces)
                 self.translateTextView2.text = text
@@ -317,9 +317,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     }
 
     // deeplResultObservableストリームを購読（監視) / 翻訳結果をUIに反映
-    private func bindViewModelToTranslateJp() {
-        // TranslateViewModelにあるAPIリクエストを含むメソッドを呼ぶ(translateText(text: String))
-        let deeplResultObservable: Observable<DeepLResult> = self.translationViewModel.translateJpText(text: self.translateTextView1.text)
+    private func bindModelToTranslateJp() {
+        // TranslateModelにあるAPIリクエストを含むメソッドを呼ぶ(translateText(text: String))
+        let deeplResultObservable: Observable<DeepLResult> = self.translateModel.translateJpText(text: self.translateTextView1.text)
         deeplResultObservable.observe(on: MainScheduler.instance) // UI更新はメインスレッドで行う
             .subscribe(onNext: { [weak self] result in
                 // .subscribeでtranslationObservableストリームの(onNextやonErrorによる)変化(イベント)を購読（監視）

@@ -1,5 +1,5 @@
 //
-//  TranslateViewModel.swift
+//  TranslateModel.swift
 //  TranslationApp
 //
 //  Created by 鈴木健太 on 2023/08/16.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import SVProgressHUD
 
-class TranslateViewModel {
+class TranslateModel {
     private let disposeBag = DisposeBag()
 
     // 日本語 → 英語 RxSwiftを使用してみる
