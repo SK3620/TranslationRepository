@@ -56,7 +56,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
     private var talker = AVSpeechSynthesizer()
 
-    private let translateModel = translateModel()
+    private let translateModel = TranslateModel()
 
     private let decoder: JSONDecoder = .init()
 
