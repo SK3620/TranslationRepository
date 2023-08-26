@@ -287,9 +287,24 @@
                     <view key="view" contentMode="scaleToFill" id="tZz-8M-WMH">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3U-d2-M8s">
+                                <rect key="frame" x="175.66666666666666" y="381" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Jhn-5c-vDD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="m3U-d2-M8s" firstAttribute="centerY" secondItem="tZz-8M-WMH" secondAttribute="centerY" id="BMa-sS-Yzj"/>
+                            <constraint firstItem="m3U-d2-M8s" firstAttribute="centerX" secondItem="tZz-8M-WMH" secondAttribute="centerX" id="bRA-5Y-chw"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="youTubeLabel" destination="m3U-d2-M8s" id="eDb-GE-q0u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAP-Mb-5oe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
