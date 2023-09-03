@@ -23,12 +23,9 @@ Firebase/Firestore
 Firebase/Storage  
 FirebaseUI/Storage  
 CLImageEditor/AllTools 0.2.4  
-SwiftFormat/CLI  
 Parchment ~> 3.0  
 MessageKit  
-FirebaseDatabase  
 RxSwift  
-RxCocoa  
 
 Installed in a terminal using CocoaPods
 # Development Environment  
