@@ -330,7 +330,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 SVProgressHUD.showSuccess(withStatus: "翻訳完了")
                 SVProgressHUD.dismiss(withDelay: 1.5)
             }, onError: { error in
-                debugPrint("APIリクエストエラー: \(error.localizedDescription)")
+                debugPrint("APIリクエストエラー: error:\(error) error.localizedDescription:\(error.localizedDescription)")
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }, onDisposed: { [weak self] in
                 // シーケンスが正常に完了した時/エラーが流れてきた時などに実行される処理

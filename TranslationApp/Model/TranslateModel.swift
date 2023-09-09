@@ -17,9 +17,7 @@ class TranslateModel {
     func translateJpText(text: String) -> Observable<DeepLResult> {
         SVProgressHUD.show(withStatus: "翻訳中")
 
-        var authKey = KeyManager().getValue(key: "apiKey") as! String
-
-        authKey = authKey.trimmingCharacters(in: .newlines)
+        let authKey = KeyManager().getValue(key: "apiKey") as! String
 
         let parameters: [String: String] = [
             "text": text,
@@ -35,7 +33,7 @@ class TranslateModel {
         // .createメソッドで、独自のDeepLResultという型の結果を非同期に取得するストリームを作成
         let deeplResultObservable = Observable<DeepLResult>.create { observer in
             // この"observer"は.onNextや.onErrorなどのメソッドを使用して、仲介役として非同期処理の結果やエラーなどを、作成した独自のObservable<DeepLResult>ストリームに通知
-            let request = AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
+            let request = AF.request("https://api-free.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
                 if case .success = response.result, let data = response.data {
                     do {
                         let result: DeepLResult = try JSONDecoder().decode(DeepLResult.self, from: data)
@@ -67,11 +65,7 @@ class TranslateModel {
     // 英語 → 日本語 do try catch構文・Result<Success, Failure: Error> を使用してみる
     func translateEngText(text: String, completion: @escaping (Result<DeepLResult, TranslationError>) -> Void) {
         SVProgressHUD.show(withStatus: "翻訳中")
-        var authKey = KeyManager().getValue(key: "apiKey") as! String
-
-        //            前後のスペースと改行を削除
-        authKey = authKey.trimmingCharacters(in: .newlines)
-
+        let authKey = KeyManager().getValue(key: "apiKey") as! String
         // APIリクエストするパラメータを作成　リクエストするために必要な情報を定義　リクエスト成功時に、翻訳結果が返される
         let parameters: [String: String] = [
             "text": text,
@@ -85,7 +79,7 @@ class TranslateModel {
             "Content-Type": "application/x-www-form-urlencoded",
         ]
 
-        AF.request("https://api.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
+        AF.request("https://api-free.deepl.com/v2/translate", method: .post, parameters: parameters, encoder: URLEncodedFormParameterEncoder.default, headers: headers).responseDecodable(of: DeepLResult.self) { response in
             switch response.result {
             case .success:
                 do {
