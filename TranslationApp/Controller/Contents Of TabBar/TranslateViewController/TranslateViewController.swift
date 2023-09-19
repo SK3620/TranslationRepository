@@ -41,10 +41,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     @IBOutlet private var deleteTextButton1: UIButton!
     @IBOutlet private var deleteTextButton2: UIButton!
 
-    // アプリ使い方説明画像用のUIViewとCollectionView
-    var fullScreenView: UIView!
-    var howToUseCollectionView: UICollectionView!
-
+    // アプリ使い方説明画面
+    private var imageArr: [UIImage] = [] // アプリ説明画像(8枚後でappend)
+    private var fullScreenView: UIView!
+    private var howToUseCollectionView: UICollectionView!
+    
     //    フォルダー名を格納
     var folderNameString: String?
 
@@ -113,7 +114,8 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         self.languageLabel1.text = "Japanese"
         self.languageLabel2.text = "English"
 
-        // アプリ説明画像を生成
+        // アプリ使い方説明のための準備
+        self.appendImages()
         self.createFullScreenView()
         self.createHowToUseCollectionView()
     }
@@ -599,6 +601,12 @@ extension TranslateViewController: ContextMenuDelegate {
 
 // アプリ説明画面を作る
 extension TranslateViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    //アプリ使い方説明画像8枚をappend
+    func appendImages(){
+        self.imageArr = [UIImage(named: "IMG_3231")!, UIImage(named: "IMG_3232")!,UIImage(named: "IMG_3241")!, UIImage(named: "IMG_3233")!,UIImage(named: "IMG_3234")!, UIImage(named: "IMG_3235")!,UIImage(named: "IMG_3236")!, UIImage(named: "IMG_3237")!]
+    }
+    
     // UIViewを生成
     func createFullScreenView() {
         self.fullScreenView = UIView()
@@ -640,9 +648,9 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
             self.howToUseCollectionView.trailingAnchor.constraint(equalTo: self.fullScreenView.trailingAnchor, constant: 0),
         ])
     }
-
+    
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 10
+        return self.imageArr.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
