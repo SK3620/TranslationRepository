@@ -684,6 +684,11 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
 
         return cell
     }
+    
+    // タップされたcellにスクロール
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.howToUseCollectionView.scrollToItem(at: IndexPath(row: indexPath.row, section: indexPath.section), at: .centeredHorizontally, animated: true)
+    }
 }
 
 extension TranslateViewController: ScrollingDelegate {
