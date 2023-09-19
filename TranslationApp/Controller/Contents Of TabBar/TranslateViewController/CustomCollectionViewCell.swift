@@ -7,8 +7,16 @@
 
 import UIKit
 
+// next/backButtonタップ時に呼ばれる
+protocol ScrollingDelegate: NSObject {
+    func scrollToNextOrBackCell(collectionViewCell: CustomCollectionViewCell, indexPath: IndexPath, sender: UIButton)
+}
+
 class CustomCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = "CustomCell"
+
+    var scrollingDelegate: ScrollingDelegate!
+    var indexPath: IndexPath!
 
     // アプリ説明画像用のimageView生成
     let imageView: UIImageView = {
@@ -84,6 +92,14 @@ class CustomCollectionViewCell: UICollectionViewCell {
             self.backButton.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor, constant: 5),
             self.backButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
+
+        self.nextButton.addTarget(self, action: #selector(self.tapScrollButton(_:)), for: .touchUpInside)
+        self.backButton.addTarget(self, action: #selector(self.tapScrollButton(_:)), for: .touchUpInside)
+    }
+
+    // デリゲートメソッドを呼ぶ → 右/左隣の画像にスクロール
+    @objc func tapScrollButton(_ sender: UIButton) {
+        self.scrollingDelegate.scrollToNextOrBackCell(collectionViewCell: self, indexPath: self.indexPath, sender: sender)
     }
 
     @available(*, unavailable)

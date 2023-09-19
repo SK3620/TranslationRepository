@@ -657,6 +657,8 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
 
         cell.imageView.image = self.imageArr[indexPath.row] // アプリ説明画像を設置
+        cell.indexPath = indexPath
+        cell.scrollingDelegate = self
 
         // cellに番号を振る
         switch indexPath.row {
@@ -681,5 +683,31 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
         }
 
         return cell
+    }
+}
+
+extension TranslateViewController: ScrollingDelegate {
+    // next/backButtonタップ時、右/左隣の画像にスクロールするデリゲートメソッド
+    func scrollToNextOrBackCell(collectionViewCell: CustomCollectionViewCell, indexPath: IndexPath, sender: UIButton) {
+        switch sender {
+        case collectionViewCell.nextButton: // 右隣の画像へスクロール
+            let nextIndexPath = IndexPath(row: indexPath.row + 1, section: 0)
+
+            if nextIndexPath.row <= self.imageArr.count - 1 {
+                self.howToUseCollectionView.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
+            } else if nextIndexPath.row > self.imageArr.count - 1 {
+                self.howToUseCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .centeredHorizontally, animated: true)
+            }
+        case collectionViewCell.backButton: // 左隣の画像へスクロール
+            let backIndexPath = IndexPath(row: indexPath.row - 1, section: 0)
+
+            if indexPath.row > 0 {
+                self.howToUseCollectionView.scrollToItem(at: backIndexPath, at: .centeredHorizontally, animated: true)
+            } else if backIndexPath.row <= 0 {
+                self.howToUseCollectionView.scrollToItem(at: IndexPath(row: self.imageArr.count - 1, section: 0), at: .centeredHorizontally, animated: true)
+            }
+        default:
+            print("他の値")
+        }
     }
 }
