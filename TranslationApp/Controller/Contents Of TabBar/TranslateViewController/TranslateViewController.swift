@@ -609,7 +609,7 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
     // UIViewを生成
     func createFullScreenView() {
         self.fullScreenView = UIView()
-        self.fullScreenView.backgroundColor = .systemOrange
+        self.fullScreenView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
         self.fullScreenView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.fullScreenView)
 
@@ -634,6 +634,7 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
         self.howToUseCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout) // UICollectionViewインスタンス生成
         self.howToUseCollectionView.translatesAutoresizingMaskIntoConstraints = false
         self.howToUseCollectionView.isScrollEnabled = false
+        self.howToUseCollectionView.backgroundColor = .clear
         self.howToUseCollectionView.dataSource = self
         self.howToUseCollectionView.delegate = self
         self.howToUseCollectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.reuseIdentifier)
@@ -656,6 +657,28 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
 
         cell.imageView.image = self.imageArr[indexPath.row] // アプリ説明画像を設置
+
+        // cellに番号を振る
+        switch indexPath.row {
+        case 0:
+            cell.usageNumLabel.text = "①"
+        case 1:
+            cell.usageNumLabel.text = "②"
+        case 2:
+            cell.usageNumLabel.text = "③"
+        case 3:
+            cell.usageNumLabel.text = "④"
+        case 4:
+            cell.usageNumLabel.text = "⑤"
+        case 5:
+            cell.usageNumLabel.text = "⑥"
+        case 6:
+            cell.usageNumLabel.text = "⑦"
+        case 7:
+            cell.usageNumLabel.text = "⑧"
+        default:
+            print("他の値")
+        }
 
         return cell
     }
