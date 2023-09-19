@@ -17,13 +17,31 @@ class CustomCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
 
-    // 説明テキスト用のlable生成
+    // 説明画像の番号用のlable生成
     let usageNumLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 40, weight: .heavy)
         label.textColor = .systemOrange
         return label
+    }()
+
+    // 右隣の画像へのスクロール用のbutton生成
+    let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .medium)
+        button.setImage(UIImage(systemName: "arrowtriangle.right.circle", withConfiguration: config), for: .normal)
+        return button
+    }()
+
+    // 左隣の画像へのスクロール用のbutton生成
+    let backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .medium)
+        button.setImage(UIImage(systemName: "arrowtriangle.left.circle", withConfiguration: config), for: .normal)
+        return button
     }()
 
     override init(frame: CGRect) {
@@ -35,7 +53,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.systemBlue.cgColor
         contentView.layer.borderWidth = 1.0
 
-        // imageViewをcellに追加
+        // imageViewをcellに追加 + 制約設定
         contentView.addSubview(self.imageView)
         self.imageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -46,12 +64,25 @@ class CustomCollectionViewCell: UICollectionViewCell {
             self.imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
         ])
 
-        // usageLableをcellに追加
+        // usageLableをcellに追加 + 制約設定
         contentView.addSubview(self.usageNumLabel)
         self.usageNumLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             self.usageNumLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             self.usageNumLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: -50),
+        ])
+
+        // 右隣/左隣の画像にスクロールするbuttonをcellに追加 + 制約設定 + action設定
+        self.addSubview(self.nextButton)
+        self.addSubview(self.backButton)
+
+        NSLayoutConstraint.activate([
+            self.nextButton.trailingAnchor.constraint(equalTo: self.imageView.trailingAnchor, constant: -5),
+            self.nextButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+        ])
+        NSLayoutConstraint.activate([
+            self.backButton.leadingAnchor.constraint(equalTo: self.imageView.leadingAnchor, constant: 5),
+            self.backButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
         ])
     }
 
