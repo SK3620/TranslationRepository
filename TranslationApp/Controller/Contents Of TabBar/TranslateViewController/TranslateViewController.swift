@@ -41,6 +41,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     @IBOutlet private var deleteTextButton1: UIButton!
     @IBOutlet private var deleteTextButton2: UIButton!
 
+    // アプリ使い方説明画像用のUIViewとCollectionView
+    var fullScreenView: UIView!
+    var howToUseCollectionView: UICollectionView!
+
     //    フォルダー名を格納
     var folderNameString: String?
 
@@ -108,6 +112,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         self.label1.text = "ドラマや映画のフレーズや単語、自英作文などを入力して作成したフォルダーに保存しよう！"
         self.languageLabel1.text = "Japanese"
         self.languageLabel2.text = "English"
+
+        // アプリ説明画像を生成
+        self.createFullScreenView()
+        self.createHowToUseCollectionView()
     }
 
     @objc func keyboardWillHide() {
@@ -586,5 +594,60 @@ extension TranslateViewController: ContextMenuDelegate {
 
     func contextMenuDidDisappear(_: ContextMenu) {
         print("メニューが閉じました")
+    }
+}
+
+// アプリ説明画面を作る
+extension TranslateViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    // UIViewを生成
+    func createFullScreenView() {
+        self.fullScreenView = UIView()
+        self.fullScreenView.backgroundColor = .systemOrange
+        self.fullScreenView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.fullScreenView)
+
+        NSLayoutConstraint.activate([
+            self.fullScreenView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.fullScreenView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.fullScreenView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.fullScreenView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+        ])
+    }
+
+    // UICollectionViewを生成
+    func createHowToUseCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal // 横にスクロール
+        flowLayout.itemSize = CGSize(
+            width: self.view.frame.width - 110,
+            height: self.view.frame.height * 0.55
+        ) // セルの大きさ
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 55, bottom: 0, right: 55) //
+
+        self.howToUseCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout) // UICollectionViewインスタンス生成
+        self.howToUseCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.howToUseCollectionView.isScrollEnabled = false
+        self.howToUseCollectionView.dataSource = self
+        self.howToUseCollectionView.delegate = self
+        self.howToUseCollectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.reuseIdentifier)
+
+        self.fullScreenView.addSubview(self.howToUseCollectionView)
+
+        NSLayoutConstraint.activate([
+            self.howToUseCollectionView.topAnchor.constraint(equalTo: self.fullScreenView.topAnchor),
+            self.howToUseCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.howToUseCollectionView.leadingAnchor.constraint(equalTo: self.fullScreenView.leadingAnchor, constant: 0),
+            self.howToUseCollectionView.trailingAnchor.constraint(equalTo: self.fullScreenView.trailingAnchor, constant: 0),
+        ])
+    }
+
+    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        return 10
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseIdentifier, for: indexPath) as! CustomCollectionViewCell
+
+        return cell
     }
 }
