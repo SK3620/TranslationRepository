@@ -56,10 +56,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame) // CustomCollectionViewCellのイニシャライザ内で、親クラスであるUICollectionViewCellのイニシャライザを呼び出す　.zeroと指定 → カスタムセルの初期化時には特定のフレームを持たないことを示す → 実際のセルのサイズや位置は、コレクションビューのレイアウトによって設定。
 
         // cellの外観設定
-        contentView.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 0.075)
+        contentView.backgroundColor = UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 0.1)
         contentView.layer.cornerRadius = 30
-        contentView.layer.borderColor = UIColor.systemBlue.cgColor
-        contentView.layer.borderWidth = 1.0
+        contentView.layer.borderColor = UIColor.systemOrange.cgColor
+        contentView.layer.borderWidth = 1.5
 
         // imageViewをcellに追加 + 制約設定
         contentView.addSubview(self.imageView)

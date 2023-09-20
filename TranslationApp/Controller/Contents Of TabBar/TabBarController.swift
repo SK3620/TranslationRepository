@@ -13,6 +13,7 @@ import UIKit
 
 class TabBarController: UITabBarController {
     internal var tabBarController1: UITabBarController!
+
     private let realm = try! Realm()
     private var translationFolder: TranslationFolder!
     private var folderNameArr = [String]()

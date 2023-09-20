@@ -8,9 +8,7 @@
 import Firebase
 import RealmSwift
 import UIKit
-
-@main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+@main class AppDelegate: UIResponder, UIApplicationDelegate {
     // SVProgressHUDをXcode11以上で実行するための環境調整コード
     var window: UIWindow?
 

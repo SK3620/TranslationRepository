@@ -113,11 +113,17 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         self.label1.text = "ドラマや映画のフレーズや単語、自英作文などを入力して作成したフォルダーに保存しよう！"
         self.languageLabel1.text = "Japanese"
         self.languageLabel2.text = "English"
+    }
+
+    override func viewDidAppear(_: Bool) {
+        super.viewDidAppear(true)
 
         // アプリ使い方説明のための準備
         self.appendImages()
         self.createFullScreenView()
         self.createHowToUseCollectionView()
+        self.toggleButtonStatesAndAppearance()
+        self.createCloseButton()
     }
 
     @objc func keyboardWillHide() {
@@ -602,23 +608,27 @@ extension TranslateViewController: ContextMenuDelegate {
 // アプリ説明画面を作る
 extension TranslateViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     // アプリ使い方説明画像8枚をappend
-    func appendImages() {
+    private func appendImages() {
         self.imageArr = [UIImage(named: "IMG_3231")!, UIImage(named: "IMG_3232")!, UIImage(named: "IMG_3241")!, UIImage(named: "IMG_3233")!, UIImage(named: "IMG_3234")!, UIImage(named: "IMG_3235")!, UIImage(named: "IMG_3236")!, UIImage(named: "IMG_3237")!]
     }
 
     // UIViewを生成
-    func createFullScreenView() {
+    private func createFullScreenView() {
         self.fullScreenView = UIView()
-        self.fullScreenView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
+        self.fullScreenView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
         self.fullScreenView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.fullScreenView)
 
         NSLayoutConstraint.activate([
             self.fullScreenView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.fullScreenView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.fullScreenView.safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: self.tabBarController!.tabBar.topAnchor, constant: 0),
             self.fullScreenView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             self.fullScreenView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
         ])
+
+        let button = UIButton()
+        button.setTitle("閉じるボタン", for: .normal)
+        self.fullScreenView.addSubview(button)
     }
 
     // UICollectionViewを生成
@@ -647,6 +657,68 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
             self.howToUseCollectionView.leadingAnchor.constraint(equalTo: self.fullScreenView.leadingAnchor, constant: 0),
             self.howToUseCollectionView.trailingAnchor.constraint(equalTo: self.fullScreenView.trailingAnchor, constant: 0),
         ])
+    }
+
+    // アプリ使い方説明画像表示を閉じるbutton作成
+    private func createCloseButton() {
+        let closeButton = UIButton(type: .custom)
+        closeButton.setTitle("完了", for: .normal)
+        closeButton.setTitleColor(.systemBlue, for: .normal)
+        closeButton.backgroundColor = .clear
+        closeButton.layer.borderWidth = 1.5
+        closeButton.layer.borderColor = UIColor.systemBlue.cgColor
+        closeButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        self.fullScreenView.addSubview(closeButton)
+
+        // tabbarとhowToUseCollectionViewの間（真ん中）にcloseButton設置
+        let totalHeight = self.view.frame.height
+        let tabBarHeight = self.tabBarController!.tabBar.frame.height
+        let navBarHeight = self.navigationController!.navigationBar.frame.height
+        let statusBarHeight = self.view.window!.windowScene!.statusBarManager!.statusBarFrame.height
+        let availableHeight = totalHeight - tabBarHeight - navBarHeight - statusBarHeight
+        let topHeight = (availableHeight - self.view.frame.height * 0.55) / 2
+        let bottomHeight = self.view.frame.height * 0.55 / 2
+        let centerY = topHeight / 2 + bottomHeight
+
+        NSLayoutConstraint.activate([
+            closeButton.centerXAnchor.constraint(equalTo: self.fullScreenView.centerXAnchor),
+            closeButton.centerYAnchor.constraint(equalTo: self.fullScreenView.centerYAnchor, constant: centerY),
+            closeButton.widthAnchor.constraint(equalToConstant: self.view.frame.width * 0.3),
+            closeButton.heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.05),
+        ])
+
+        closeButton.layer.cornerRadius = self.view.frame.height * 0.05 / 2
+
+        closeButton.addTarget(self, action: #selector(self.tappCloseButton(_:)), for: .touchUpInside)
+    }
+
+    // closeButtonタップ時 → アプリ説明画面を閉じる
+    @objc func tappCloseButton(_: UIButton) {
+        print("CloseButtonがタップされた")
+    }
+
+    // 説明画像表示中はボタンをisEnabled = false, その他UI部品color = systemGray2
+    private func toggleButtonStatesAndAppearance() {
+        self.changeLanguageButton.isEnabled.toggle()
+        self.copyButton1.isEnabled.toggle()
+        self.copyButton2.isEnabled.toggle()
+        self.volumeButton1.isEnabled.toggle()
+        self.volumeButton2.isEnabled.toggle()
+        self.deleteTextButton1.isEnabled.toggle()
+        self.deleteTextButton2.isEnabled.toggle()
+        self.translateButton.isEnabled.toggle()
+        self.selectFolderButton.isEnabled.toggle()
+        self.saveButton.isEnabled.toggle()
+
+        if let currentColor = self.translateButton.layer.borderColor {
+            self.translateButton.layer.borderColor = (currentColor == UIColor.systemGray2.cgColor) ? UIColor.systemBlue.cgColor : UIColor.systemGray2.cgColor
+            self.changeLanguageButton.layer.borderColor = (currentColor == UIColor.systemGray2.cgColor) ? UIColor.systemBlue.cgColor : UIColor.systemGray2.cgColor
+            self.selectFolderButton.layer.borderColor = (currentColor == UIColor.systemGray2.cgColor) ? UIColor.systemBlue.cgColor : UIColor.systemGray2.cgColor
+            self.saveButton.layer.borderColor = (currentColor == UIColor.systemGray2.cgColor) ? UIColor.systemBlue.cgColor : UIColor.systemGray2.cgColor
+            self.languageLabel1.textColor = (currentColor == UIColor.systemGray2.cgColor) ? UIColor.systemBlue : UIColor.systemGray2
+            self.languageLabel2.textColor = (currentColor == UIColor.systemGray2.cgColor) ? UIColor.systemBlue : UIColor.systemGray2
+        }
     }
 
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
@@ -684,9 +756,9 @@ extension TranslateViewController: UICollectionViewDataSource, UICollectionViewD
 
         return cell
     }
-    
+
     // タップされたcellにスクロール
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.howToUseCollectionView.scrollToItem(at: IndexPath(row: indexPath.row, section: indexPath.section), at: .centeredHorizontally, animated: true)
     }
 }
