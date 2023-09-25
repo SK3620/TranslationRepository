@@ -85,6 +85,7 @@
 		83AF317628CF863100FDA0E1 /* HistoryViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF317528CF863100FDA0E1 /* HistoryViewContoller.swift */; };
 		83B5E1182AC1B0340057DD18 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5E1172AC1B0340057DD18 /* Tutorial.storyboard */; };
 		83B5E11A2AC1BBBB0057DD18 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5E1192AC1BBBB0057DD18 /* TutorialViewController.swift */; };
+		83B5E11C2AC1C5CA0057DD18 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5E11B2AC1C5CA0057DD18 /* CustomCollectionViewCell.swift */; };
 		83B6AF1C28E71E8C00700DBF /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6AF1B28E71E8C00700DBF /* ReviewViewController.swift */; };
 		83B6AF1F28E7254000700DBF /* CustomCellForReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6AF1D28E7254000700DBF /* CustomCellForReview.swift */; };
 		83B6AF2028E7254000700DBF /* CustomCellForReview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B6AF1E28E7254000700DBF /* CustomCellForReview.xib */; };
@@ -221,6 +222,7 @@
 		83AF317528CF863100FDA0E1 /* HistoryViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewContoller.swift; sourceTree = "<group>"; };
 		83B5E1172AC1B0340057DD18 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		83B5E1192AC1BBBB0057DD18 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		83B5E11B2AC1C5CA0057DD18 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		83B6AF1B28E71E8C00700DBF /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		83B6AF1D28E7254000700DBF /* CustomCellForReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellForReview.swift; sourceTree = "<group>"; };
 		83B6AF1E28E7254000700DBF /* CustomCellForReview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellForReview.xib; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 		837A82FF298C2652001049D4 /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
+				83B5E11B2AC1C5CA0057DD18 /* CustomCollectionViewCell.swift */,
 				83920A9D290B946100F1F2D6 /* CustomCellForIntroduction.swift */,
 				83C292162912E92D00386EE9 /* CustomCellForTimeLine.swift */,
 				83D8963529141D9500E570AD /* CustomCellForCommentSetion.swift */,
@@ -790,6 +793,7 @@
 				8356E9552905574500FD9236 /* History.swift in Sources */,
 				835B38EC2950070200D42F50 /* ChatList.swift in Sources */,
 				83D896342914190500E570AD /* InputCommentViewController.swift in Sources */,
+				83B5E11C2AC1C5CA0057DD18 /* CustomCollectionViewCell.swift in Sources */,
 				83AD2C1B290A48AB009B0C84 /* SecondTabBarController.swift in Sources */,
 				83A2E1B029019CA100F1117A /* SelectFolderForStudyViewContoller.swift in Sources */,
 				8385EA0E2951858B0034E0F6 /* ChatRoom.swift in Sources */,
