@@ -30,6 +30,7 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     @IBOutlet private var saveButton: UIButton!
     @IBOutlet private var translateButton: UIButton!
     @IBOutlet private var selectFolderButton: UIButton!
+    @IBOutlet private var tutorialButton: UIButton!
 
     @IBOutlet private var view1: UIView!
     @IBOutlet private var view2: UIView!
@@ -82,6 +83,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
 
         //        右下の保存先選択ボタンのデザイン設定
         self.setButtonDesign1(button: [self.selectFolderButton], pointSize: 18, weight: .medium, scale: .medium, systemName: ["square.and.arrow.down"], borderWidth: 1, borderColor: UIColor.systemBlue.cgColor, cornerRadius: 10)
+
+        //        チュートリアルボタンのデザイン設定
+        self.setButtonDesign1(button: [self.tutorialButton], pointSize: 18, weight: .medium, scale: .medium, systemName: ["book"], borderWidth: 1, borderColor: UIColor.systemOrange.cgColor, cornerRadius: 10)
+        self.tutorialButton.tintColor = .systemOrange
 
         //        ボタンを格納して、それぞれボタンにデザイン設定
         let buttonArr1: [UIButton]! = [copyButton1, copyButton2, volumeButton1, volumeButton2, deleteTextButton1, deleteTextButton2]
@@ -424,6 +429,11 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         }
         selectFolderForTranslateViewContoller.translateViewController = self
         present(navigationController, animated: true, completion: nil)
+    }
+
+    @IBAction func tutorialButton(_: Any) {
+        let NCForTutorialViewController = storyboard!.instantiateViewController(withIdentifier: "Tutorial") as! UINavigationController
+        present(NCForTutorialViewController, animated: true, completion: nil)
     }
 
     internal func setFolderNameStringOnButton2() {

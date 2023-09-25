@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tutorial-->
+        <scene sceneID="00Q-1M-uJP">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Tutorial" storyboardName="Tutorial" id="QP0-r8-AND" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GLK-hM-Y9R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3082" y="347"/>
+        </scene>
         <!--翻訳-->
         <scene sceneID="lKR-i0-Z5f">
             <objects>
@@ -199,6 +207,14 @@
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Op4-dB-zCF">
+                                        <rect key="frame" x="361" y="372.66666666666669" width="24" height="14"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="tutorialButton:" destination="Pbn-pb-T9g" eventType="touchUpInside" id="FRO-Lr-c8k"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -229,8 +245,10 @@
                                     <constraint firstItem="fI1-Bl-qhM" firstAttribute="top" secondItem="VGe-sB-Lto" secondAttribute="top" id="mkn-ca-dBP"/>
                                     <constraint firstItem="rtc-Hs-cis" firstAttribute="centerX" secondItem="ZnX-1x-3Qk" secondAttribute="centerX" id="p6y-YF-UhV"/>
                                     <constraint firstItem="ZnX-1x-3Qk" firstAttribute="centerX" secondItem="bAr-MF-mb1" secondAttribute="centerX" id="pFc-qo-LTZ"/>
+                                    <constraint firstItem="fQj-qQ-rjs" firstAttribute="centerX" secondItem="Op4-dB-zCF" secondAttribute="centerX" id="t3q-KV-TxL"/>
                                     <constraint firstItem="fI1-Bl-qhM" firstAttribute="leading" secondItem="VGe-sB-Lto" secondAttribute="trailing" constant="-2" id="tta-IJ-wqj"/>
                                     <constraint firstItem="xe1-Cw-YaM" firstAttribute="top" secondItem="VGe-sB-Lto" secondAttribute="bottom" constant="8" id="uDb-ku-AfM"/>
+                                    <constraint firstItem="Op4-dB-zCF" firstAttribute="centerY" secondItem="xe1-Cw-YaM" secondAttribute="centerY" id="zO6-22-f5j"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -260,6 +278,7 @@
                         <outlet property="translateButton" destination="xe1-Cw-YaM" id="ksx-mH-5hm"/>
                         <outlet property="translateTextView1" destination="VGe-sB-Lto" id="ELh-vF-mm0"/>
                         <outlet property="translateTextView2" destination="vp1-lh-siV" id="bfG-QH-aSG"/>
+                        <outlet property="tutorialButton" destination="Op4-dB-zCF" id="yXY-Nv-Bxb"/>
                         <outlet property="view1" destination="fI1-Bl-qhM" id="vXO-n5-zbK"/>
                         <outlet property="view2" destination="apo-CF-Un8" id="jlA-4P-eX0"/>
                         <outlet property="volumeButton1" destination="khe-js-SHu" id="6XN-rb-Qr5"/>

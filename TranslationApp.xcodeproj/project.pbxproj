@@ -83,6 +83,8 @@
 		83AD2C1B290A48AB009B0C84 /* SecondTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD2C1A290A48AB009B0C84 /* SecondTabBarController.swift */; };
 		83AF317228CF037200FDA0E1 /* MemoForStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF317128CF037200FDA0E1 /* MemoForStudyViewController.swift */; };
 		83AF317628CF863100FDA0E1 /* HistoryViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AF317528CF863100FDA0E1 /* HistoryViewContoller.swift */; };
+		83B5E1182AC1B0340057DD18 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83B5E1172AC1B0340057DD18 /* Tutorial.storyboard */; };
+		83B5E11A2AC1BBBB0057DD18 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B5E1192AC1BBBB0057DD18 /* TutorialViewController.swift */; };
 		83B6AF1C28E71E8C00700DBF /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6AF1B28E71E8C00700DBF /* ReviewViewController.swift */; };
 		83B6AF1F28E7254000700DBF /* CustomCellForReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B6AF1D28E7254000700DBF /* CustomCellForReview.swift */; };
 		83B6AF2028E7254000700DBF /* CustomCellForReview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B6AF1E28E7254000700DBF /* CustomCellForReview.xib */; };
@@ -217,6 +219,8 @@
 		83AD2C1A290A48AB009B0C84 /* SecondTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondTabBarController.swift; sourceTree = "<group>"; };
 		83AF317128CF037200FDA0E1 /* MemoForStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoForStudyViewController.swift; sourceTree = "<group>"; };
 		83AF317528CF863100FDA0E1 /* HistoryViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewContoller.swift; sourceTree = "<group>"; };
+		83B5E1172AC1B0340057DD18 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		83B5E1192AC1BBBB0057DD18 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		83B6AF1B28E71E8C00700DBF /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		83B6AF1D28E7254000700DBF /* CustomCellForReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellForReview.swift; sourceTree = "<group>"; };
 		83B6AF1E28E7254000700DBF /* CustomCellForReview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellForReview.xib; sourceTree = "<group>"; };
@@ -427,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				839FBA3028BA0F7000BB64A5 /* TranslateViewController.swift */,
+				83B5E1192AC1BBBB0057DD18 /* TutorialViewController.swift */,
 				83C15AF928BF451F00280694 /* SelectFolderForTranslateViewContoller.swift */,
 			);
 			path = TranslateViewController;
@@ -552,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				83071CFE28B91AC70003734C /* Main.storyboard */,
+				83B5E1172AC1B0340057DD18 /* Tutorial.storyboard */,
 				839F18CA298CD6D20024DF51 /* QuickMemo.storyboard */,
 				839F18CC298CDB440024DF51 /* PhraseWord.storyboard */,
 				83D3D04F298F9E7900C1781C /* Study.storyboard */,
@@ -707,6 +713,7 @@
 				83862E38297D183F0032E05B /* CustomCellForTermsOfService.xib in Resources */,
 				83B9C20228D3050E006138E2 /* CustomCellForRecord.xib in Resources */,
 				83D3D066298FC33E00C1781C /* Post.storyboard in Resources */,
+				83B5E1182AC1B0340057DD18 /* Tutorial.storyboard in Resources */,
 				83D3D056298FA1E200C1781C /* Record.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -845,6 +852,7 @@
 				83C2CC9D291D1C6500A671AE /* WordViewController.swift in Sources */,
 				83CE5511293F5FF300B9E698 /* PostedCommentsHistoryViewController.swift in Sources */,
 				83D8963729141D9500E570AD /* CustomCellForCommentSetion.swift in Sources */,
+				83B5E11A2AC1BBBB0057DD18 /* TutorialViewController.swift in Sources */,
 				83AF317628CF863100FDA0E1 /* HistoryViewContoller.swift in Sources */,
 				83D896322913F5CD00E570AD /* CommentSectionViewController.swift in Sources */,
 				8388DA5A28C9E25D008DE6FF /* TabBarController.swift in Sources */,
