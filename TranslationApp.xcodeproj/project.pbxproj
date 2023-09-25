@@ -73,7 +73,6 @@
 		839FBA3128BA0F7000BB64A5 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839FBA3028BA0F7000BB64A5 /* TranslateViewController.swift */; };
 		839FBA3328BA101200BB64A5 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839FBA3228BA101200BB64A5 /* FolderViewController.swift */; };
 		839FBA3B28BA602700BB64A5 /* KeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839FBA3A28BA602700BB64A5 /* KeyManager.swift */; };
-		83A181642AB9771D0008EBF6 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A181632AB9771D0008EBF6 /* CustomCollectionViewCell.swift */; };
 		83A1D5C7290EC69D00B6F18A /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A1D5C6290EC69D00B6F18A /* IntroductionViewController.swift */; };
 		83A2E1B029019CA100F1117A /* SelectFolderForStudyViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A2E1AF29019CA100F1117A /* SelectFolderForStudyViewContoller.swift */; };
 		83A564C928D7630300C3A9B9 /* PhraseWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A564C828D7630300C3A9B9 /* PhraseWordViewController.swift */; };
@@ -208,7 +207,6 @@
 		839FBA3028BA0F7000BB64A5 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		839FBA3228BA101200BB64A5 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
 		839FBA3A28BA602700BB64A5 /* KeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyManager.swift; sourceTree = "<group>"; };
-		83A181632AB9771D0008EBF6 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		83A1D5C6290EC69D00B6F18A /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
 		83A2E1AF29019CA100F1117A /* SelectFolderForStudyViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFolderForStudyViewContoller.swift; sourceTree = "<group>"; };
 		83A564C828D7630300C3A9B9 /* PhraseWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseWordViewController.swift; sourceTree = "<group>"; };
@@ -429,7 +427,6 @@
 			isa = PBXGroup;
 			children = (
 				839FBA3028BA0F7000BB64A5 /* TranslateViewController.swift */,
-				83A181632AB9771D0008EBF6 /* CustomCollectionViewCell.swift */,
 				83C15AF928BF451F00280694 /* SelectFolderForTranslateViewContoller.swift */,
 			);
 			path = TranslateViewController;
@@ -843,7 +840,6 @@
 				837A82FA298BAA6C001049D4 /* DeleteData.swift in Sources */,
 				83C2CCA1291D1CD000A671AE /* ConversationViewController.swift in Sources */,
 				835B38E4294C839F00D42F50 /* MessageSenderType.swift in Sources */,
-				83A181642AB9771D0008EBF6 /* CustomCollectionViewCell.swift in Sources */,
 				830D9FF42912DE2000F8761B /* PostViewController.swift in Sources */,
 				83B6AF1F28E7254000700DBF /* CustomCellForReview.swift in Sources */,
 				83C2CC9D291D1C6500A671AE /* WordViewController.swift in Sources */,
