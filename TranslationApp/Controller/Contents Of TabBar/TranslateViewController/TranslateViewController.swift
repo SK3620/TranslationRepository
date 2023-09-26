@@ -202,6 +202,16 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
         view.endEditing(true)
     }
 
+    override func viewDidAppear(_: Bool) {
+        super.viewDidAppear(true)
+
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "firstLaunch") {
+            self.modalToTutorialViewController()
+            defaults.set(false, forKey: "firstLaunch")
+        }
+    }
+
     override func viewWillAppear(_: Bool) {
         super.viewWillAppear(true)
 
@@ -432,6 +442,10 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
     }
 
     @IBAction func tutorialButton(_: Any) {
+        self.modalToTutorialViewController()
+    }
+
+    func modalToTutorialViewController() {
         let NCForTutorialViewController = storyboard!.instantiateViewController(withIdentifier: "Tutorial") as! UINavigationController
         present(NCForTutorialViewController, animated: true, completion: nil)
     }
