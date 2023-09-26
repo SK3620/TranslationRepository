@@ -8,6 +8,5 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-    
     static let reuseIdentifer: String = "CustomCell"
 }
