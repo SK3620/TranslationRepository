@@ -10,7 +10,18 @@ import UIKit
 class CustomCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifer: String = "CustomCell"
 
-    var underView: UIView!
+    private var underView: UIView!
+
+    // アプリチュートリアル画像の説明テキスト
+    var explainLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .purple
+        label.font = UIFont.boldSystemFont(ofSize: 17.0)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,6 +62,16 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.clipsToBounds = true
         // UIImageViewのインスタンスをビューに追加
         self.contentView.addSubview(imageView)
+    }
+
+    // explainLabelを設置
+    func setExplainLabel(collectionView _: UICollectionView) {
+        contentView.addSubview(self.explainLabel)
+
+        self.explainLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
+        self.explainLabel.centerYAnchor.constraint(equalTo: self.underView.centerYAnchor, constant: (self.underView.frame.height / 2) * 1.22).isActive = true
+        self.explainLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        self.explainLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
     }
 
     @available(*, unavailable)
