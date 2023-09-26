@@ -55,6 +55,9 @@ class TutorialViewController: UIViewController {
 
     // navigationBarに閉じるボタン
     func setNavigationBarButtonItem() {
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.purple]
+        self.title = "アプリの使い方"
+
         let closeButtonImage = UIImage(systemName: "xmark") // close_iconはアイコン画像の名前
         let closeButton = UIBarButtonItem(image: closeButtonImage, style: .plain, target: self, action: #selector(self.closeButtonTapped))
         self.navigationItem.rightBarButtonItem = closeButton
