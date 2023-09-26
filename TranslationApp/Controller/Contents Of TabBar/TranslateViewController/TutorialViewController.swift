@@ -21,11 +21,32 @@ class TutorialViewController: UIViewController {
         return pageCotrol
     }()
 
+    // 右隣のcollectionViewCellに横スクロールさせるbutton
+    let forwardButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .medium)
+        button.setImage(UIImage(systemName: "arrow.forward", withConfiguration: config), for: .normal)
+        return button
+    }()
+
+    // 左隣のcollectionViewCellに横スクロールさせるbutton
+    let backwardButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .medium)
+        button.setImage(UIImage(systemName: "arrow.backward", withConfiguration: config), for: .normal)
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setNavigationBarButtonItem()
         self.setPageControl()
+
+        self.setForwardButton()
+        self.setBackwardButton()
     }
 
     // navigationBarに閉じるボタン
@@ -47,6 +68,34 @@ class TutorialViewController: UIViewController {
             self.pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor, constant: 0), self.pageControl.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -25),
             self.pageControl.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0), self.pageControl.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
         ])
+    }
+
+    // forwardButtonの設置
+    func setForwardButton() {
+        self.view.addSubview(self.forwardButton)
+
+        NSLayoutConstraint.activate([
+            self.forwardButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            self.forwardButton.centerYAnchor.constraint(equalTo: self.pageControl.centerYAnchor),
+        ])
+
+        self.forwardButton.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
+    }
+
+    // backwardButtonの設置
+    func setBackwardButton() {
+        self.view.addSubview(self.backwardButton)
+
+        NSLayoutConstraint.activate([
+            self.backwardButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.backwardButton.centerYAnchor.constraint(equalTo: self.pageControl.centerYAnchor),
+        ])
+
+        self.backwardButton.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
+    }
+
+    @objc func tapButton(_: UIButton) {
+        print("ボタンがタップされました")
     }
 }
 
