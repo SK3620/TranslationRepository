@@ -74,6 +74,18 @@ class TutorialViewController: UIViewController {
         ])
     }
 
+    // アプリチュートリアル画像の説明テキスト
+    enum ExplainText: String {
+        case first = "１. 右上のアイコンをタップしよう！"
+        case second = "２. 自分の好きな名前を付けて\nフォルダーを作成しよう！"
+        case third = "３. 右下のアイコンをタップしよう！"
+        case fourth = "４. 保存したい文章の保存先を選択しよう！"
+        case fifth = "５. 「保存先▷」をタップして\n選択したフォルダーに文章を保存しよう！"
+        case sixth = "６. 「フォルダー」画面に移動して\n保存先のフォルダー名をタップしよう！"
+        case seventh = "７. 「👆」アイコンをタップしよう！"
+        case eighth = "８. 真下に翻訳された文章が表示されるよ！"
+    }
+
     // self.viewの背景をグラデーション
     func createGradientLayer() {
         // グラデーションレイヤーを作成
@@ -145,8 +157,22 @@ extension TutorialViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseIdentifer, for: indexPath) as! CustomCollectionViewCell
+
         cell.createUnderViewAndImageView(image: self.imageArr[indexPath.row]!, collectionView: collectionView)
         cell.setExplainLabel(collectionView: self.collectionView)
+
+        switch indexPath.row {
+        case 0: cell.explainLabel.text = ExplainText.first.rawValue
+        case 1: cell.explainLabel.text = ExplainText.second.rawValue
+        case 2: cell.explainLabel.text = ExplainText.third.rawValue
+        case 3: cell.explainLabel.text = ExplainText.fourth.rawValue
+        case 4: cell.explainLabel.text = ExplainText.fifth.rawValue
+        case 5: cell.explainLabel.text = ExplainText.sixth.rawValue
+        case 6: cell.explainLabel.text = ExplainText.seventh.rawValue
+        case 7: cell.explainLabel.text = ExplainText.eighth.rawValue
+        default:
+            print("他の値")
+        }
 
         return cell
     }
