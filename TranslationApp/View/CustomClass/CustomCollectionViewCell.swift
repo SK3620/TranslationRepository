@@ -17,9 +17,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
 
     // ImageViewの下にUIViewを生成/設置
-    func createViewUnderImageView(image: UIImage, collectionView: UICollectionView) {
-        self.underView = UIView()
-
+    func createUnderViewAndImageView(image: UIImage, collectionView: UICollectionView) {
         // 横幅、縦幅取得
         let screenWidth = self.contentView.frame.width
         let screenHeight = collectionView.frame.height
@@ -30,20 +28,29 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
         // 画像サイズをスクリーン幅ではなく、スクリーン高さに合わせる
         let scale = screenHeight / imgHeight * 0.75
-        let rect = CGRect(x: 0, y: 0,
-                          width: imgWidth * scale + 30, height: imgHeight * scale + 30)
+        let underViewRect = CGRect(x: 0, y: 0,
+                                   width: imgWidth * scale + 30, height: imgHeight * scale + 30)
+        let imageViewRect = CGRect(x: 0, y: 0,
+                                   width: imgWidth * scale, height: imgHeight * scale)
 
-        self.underView.frame = rect
-        // 画像の中心を画面の中心に設定
+        self.underView = UIView()
+        self.underView.frame = underViewRect
         self.underView.center = CGPoint(x: screenWidth / 2, y: screenHeight * 0.5)
-
-        // 角丸にする
         self.underView.layer.cornerRadius = self.underView.frame.size.width * 0.1
         self.underView.clipsToBounds = true
-
         self.underView.backgroundColor = .systemTeal
-
         contentView.addSubview(self.underView)
+
+        let imageView = UIImageView(image: image)
+        // ImageView frame をCGRectで作った矩形に合わせる
+        imageView.frame = imageViewRect
+        // 画像の中心を画面の中心に設定
+        imageView.center = CGPoint(x: screenWidth / 2, y: screenHeight * 0.5)
+        // 角丸にする
+        imageView.layer.cornerRadius = imageView.frame.size.width * 0.1
+        imageView.clipsToBounds = true
+        // UIImageViewのインスタンスをビューに追加
+        self.contentView.addSubview(imageView)
     }
 
     @available(*, unavailable)

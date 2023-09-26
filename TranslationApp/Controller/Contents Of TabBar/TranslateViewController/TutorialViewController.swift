@@ -145,7 +145,7 @@ extension TutorialViewController: UICollectionViewDelegate, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.reuseIdentifer, for: indexPath) as! CustomCollectionViewCell
-        cell.createViewUnderImageView(image: UIImage(named: "IMG_3231")!, collectionView: collectionView)
+        cell.createUnderViewAndImageView(image: self.imageArr[indexPath.row]!, collectionView: collectionView)
 
         return cell
     }
