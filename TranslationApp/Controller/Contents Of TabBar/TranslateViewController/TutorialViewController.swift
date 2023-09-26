@@ -125,7 +125,26 @@ class TutorialViewController: UIViewController {
         self.backwardButton.addTarget(self, action: #selector(self.tapButton(_:)), for: .touchUpInside)
     }
 
-    @objc func tapButton(_: UIButton) {}
+    @objc func tapButton(_ sender: UIButton) {
+        let visibleCell = self.collectionView.visibleCells.first!
+        let indexPathRow = self.collectionView.indexPath(for: visibleCell)!.row
+
+        var indexPath: IndexPath
+
+        if sender == self.forwardButton {
+            indexPath = IndexPath(row: indexPathRow + 1, section: 0)
+            if indexPath.row > self.imageArr.count - 1 {
+                indexPath = IndexPath(row: 0, section: 0)
+            }
+        } else {
+            indexPath = IndexPath(row: indexPathRow - 1, section: 0)
+            if indexPath.row < 0 {
+                indexPath = IndexPath(row: self.imageArr.count - 1, section: 0)
+            }
+        }
+        self.pageControl.currentPage = indexPath.row
+        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
 }
 
 extension TutorialViewController: UICollectionViewDelegate, UICollectionViewDataSource {
