@@ -38,6 +38,9 @@ class TutorialViewController: UIViewController {
         button.setImage(UIImage(systemName: "arrow.backward", withConfiguration: config), for: .normal)
         return button
     }()
+    
+    // アプリチュートリアル画像8枚
+    let imageArr = [UIImage(named: "IMG_3231"), UIImage(named: "IMG_3232"),UIImage(named: "IMG_3241"), UIImage(named: "IMG_3233"),UIImage(named: "IMG_3234"), UIImage(named: "IMG_3235"),UIImage(named: "IMG_3236"), UIImage(named: "IMG_3237")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,7 +140,7 @@ extension TutorialViewController: UICollectionViewDelegate, UICollectionViewData
     }
 
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-        return 10
+        return self.imageArr.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
