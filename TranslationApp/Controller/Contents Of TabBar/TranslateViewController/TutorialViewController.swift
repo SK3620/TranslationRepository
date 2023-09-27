@@ -151,6 +151,7 @@ class TutorialViewController: UIViewController {
 }
 
 extension TutorialViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func createCollectionView() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
