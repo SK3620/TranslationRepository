@@ -272,7 +272,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 return
             }
 
+            print("buttonをfalseにしました")
             self.translateButton.isEnabled = false
+            self.saveButton.isEnabled = false
 
             if self.languageLabel1.text == "Japanese" {
                 //        Japanese → English の場合
@@ -327,7 +329,9 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }
 
+            print("buttonをtrueにしました")
             self.translateButton.isEnabled = true
+            self.saveButton.isEnabled = true
         }
     }
 
@@ -342,20 +346,24 @@ class TranslateViewController: UIViewController, UITextViewDelegate {
                 let text = result.translations[0].text.trimmingCharacters(in: .whitespaces)
                 self?.translateTextView2.text = text
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+                self!.translateButton.isEnabled = true
+                self!.saveButton.isEnabled = true
                 SVProgressHUD.showSuccess(withStatus: "翻訳完了")
                 SVProgressHUD.dismiss(withDelay: 1.5)
             }, onError: { error in
                 debugPrint("APIリクエストエラー: error:\(error) error.localizedDescription:\(error.localizedDescription)")
+                self.translateButton.isEnabled = true
+                self.saveButton.isEnabled = true
                 SVProgressHUD.showError(withStatus: "翻訳できませんでした")
             }, onDisposed: { [weak self] in
                 // シーケンスが正常に完了した時/エラーが流れてきた時などに実行される処理
-                self?.translateButton.isEnabled = true
+                self!.translateButton.isEnabled = true
+                self!.saveButton.isEnabled = true
                 print("onDispoed:のクロージャが呼び出された")
             })
             .disposed(by: self.disposeBag) // DisposeBagクラスで購読を一括で廃棄
         // .subscribeの返り値はDisposableオブジェクトなので、ここから.disposed呼ぶ 引数にself.disposeBagでゴミ箱を紐付けしただけ
         // メモリに確保されたクラスのインスタンスの解放(デイニシャライザ)時に、DisposeBagを自動的に実行
-        self.translateButton.isEnabled = true
     }
 
 //    （保存ボタン）保存先▷（フォルダー名）ボタンタップ時
