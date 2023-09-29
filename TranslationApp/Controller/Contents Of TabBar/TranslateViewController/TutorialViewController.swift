@@ -94,7 +94,7 @@ class TutorialViewController: UIViewController {
         // グラデーションレイヤーを作成
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds // UIViewと同じサイズに設定
-        let lightBlue = UIColor(red: 173 / 255.0, green: 216 / 255.0, blue: 230 / 255.0, alpha: 1.0)
+        let lightBlue = UIColor(red: 235.0 / 255.0, green: 255.0 / 255.0, blue: 255.0 / 255.0, alpha: 1.0)
 
         gradientLayer.colors = [lightBlue.cgColor, UIColor.white.cgColor] // 開始色と終了色を設定
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0) // グラデーションの開始位置（左上）
