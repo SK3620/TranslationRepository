@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "アプリアイコン5.001.png",
+      "filename" : "‎jpgAppIcon.‎001.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "‎jpgAppIcon.‎001 1.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "‎jpgAppIcon.‎001 2.jpeg",
       "idiom" : "universal",
       "scale" : "3x"
     }

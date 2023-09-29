@@ -14,7 +14,7 @@ import UIKit
 
     func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let defaults = UserDefaults.standard
-        var dic = ["firstLaunch": true]
+        let dic = ["firstLaunch": true]
         defaults.register(defaults: dic)
 
         FirebaseApp.configure()
