@@ -143,7 +143,7 @@
 		282441842AA744F6B7B3C505 /* Pods-TranslationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslationApp.debug.xcconfig"; path = "Target Support Files/Pods-TranslationApp/Pods-TranslationApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2E7040A0BCD012F1676EB60F /* Pods_TranslationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TranslationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE8B02B1D6E922B353079B6 /* Pods-TranslationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TranslationApp.release.xcconfig"; path = "Target Support Files/Pods-TranslationApp/Pods-TranslationApp.release.xcconfig"; sourceTree = "<group>"; };
-		83071CF528B91AC70003734C /* DeepL保存翻訳.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DeepL保存翻訳.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83071CF528B91AC70003734C /* 瞬間英作文 - QuickSpeak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "瞬間英作文 - QuickSpeak.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83071CF828B91AC70003734C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83071CFA28B91AC70003734C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		83071CFF28B91AC70003734C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -311,7 +311,7 @@
 		83071CF628B91AC70003734C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				83071CF528B91AC70003734C /* DeepL保存翻訳.app */,
+				83071CF528B91AC70003734C /* 瞬間英作文 - QuickSpeak.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -619,7 +619,7 @@
 				8308E9052A84CF4300FCF2D3 /* Alamofire */,
 			);
 			productName = TranslationApp;
-			productReference = 83071CF528B91AC70003734C /* DeepL保存翻訳.app */;
+			productReference = 83071CF528B91AC70003734C /* 瞬間英作文 - QuickSpeak.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1039,7 +1039,7 @@
 				DEVELOPMENT_TEAM = L35MVZ453P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TranslationApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DeepL翻訳保存";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick Speak";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -1054,7 +1054,7 @@
 				);
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kenta-suzuki.TranslationApp3";
-				PRODUCT_NAME = "DeepL保存翻訳";
+				PRODUCT_NAME = "瞬間英作文 - QuickSpeak";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1076,7 +1076,7 @@
 				DEVELOPMENT_TEAM = L35MVZ453P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TranslationApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DeepL翻訳保存";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick Speak";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -1091,7 +1091,7 @@
 				);
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kenta-suzuki.TranslationApp3";
-				PRODUCT_NAME = "DeepL保存翻訳";
+				PRODUCT_NAME = "瞬間英作文 - QuickSpeak";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
