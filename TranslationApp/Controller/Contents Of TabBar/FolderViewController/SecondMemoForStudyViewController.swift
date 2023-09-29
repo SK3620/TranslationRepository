@@ -23,8 +23,10 @@ class SecondMemoForStudyViewController: UIViewController {
 
         self.title = "No." + String(self.sentenceNum + 1)
         self.memoTextView.text = self.memo
+
         self.setDoneToolBar()
-        // Do any additional setup after loading the view.
+        self.settingNavBarColor()
+        self.settingBarButtonItem()
     }
 
     private func setDoneToolBar() {
@@ -40,7 +42,30 @@ class SecondMemoForStudyViewController: UIViewController {
         self.memoTextView.endEditing(true)
     }
 
-    @IBAction func saveButton(_: Any) {
+    private func settingNavBarColor() {
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor.systemGray6
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+
+    private func settingBarButtonItem() {
+        // 戻るボタン
+        let backBarButtonItem = UIBarButtonItem(title: "戻る", style: .plain, target: self, action: #selector(self.backToPreviousScreen))
+        self.navigationItem.leftBarButtonItem = backBarButtonItem
+
+        // メモ保存ボタン
+        let saveBarButtonItem = UIBarButtonItem(title: "保存する", style: .done, target: self, action: #selector(self.saveMemoText(_:)))
+        self.navigationItem.rightBarButtonItem = saveBarButtonItem
+    }
+
+    // 戻る
+    @objc func backToPreviousScreen() {
+        self.dismiss(animated: true)
+    }
+
+    // メモを保存する
+    @objc func saveMemoText(_: UIButton) {
         let translationArr = self.realm.objects(Translation.self).filter("id == \(self.translationId!)").first!
         try! self.realm.write {
             translationArr.secondMemo = self.memoTextView.text
@@ -50,9 +75,5 @@ class SecondMemoForStudyViewController: UIViewController {
         SVProgressHUD.dismiss(withDelay: 1.5) {
             self.dismiss(animated: true)
         }
-    }
-
-    @IBAction func backButton(_: Any) {
-        self.dismiss(animated: true)
     }
 }
