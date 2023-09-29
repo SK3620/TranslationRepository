@@ -19,7 +19,7 @@ class SecondMemoForStudyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.memoTextView.text = self.memo
         self.setDoneToolBar()
         // Do any additional setup after loading the view.

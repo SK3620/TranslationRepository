@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="909-iR-SRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="2150.9852216748768"/>
+            <point key="canvasLocation" x="2312" y="2151"/>
         </scene>
         <!--Title-->
         <scene sceneID="Ewh-uK-gNc">
@@ -265,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nJG-KB-gMk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1380" y="2150.9852216748768"/>
+            <point key="canvasLocation" x="1379" y="2151"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ohv-lI-YPv">
@@ -470,38 +470,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-C7-sz0">
-                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                                <color key="barTintColor" systemColor="systemGray6Color"/>
-                                <items>
-                                    <navigationItem title="メモ" id="JYf-nf-Ekg">
-                                        <barButtonItem key="leftBarButtonItem" title="戻る" id="sta-NW-AxN">
-                                            <connections>
-                                                <action selector="backButton:" destination="78k-aB-ZlE" id="rUg-WC-9sX"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="保存する" style="done" id="wUK-I8-MnW">
-                                            <connections>
-                                                <action selector="saveButton:" destination="78k-aB-ZlE" id="xMC-34-Pj1"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EGx-lz-fT9"/>
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="162-OR-zZf" secondAttribute="bottom" id="3Qo-v0-zig"/>
-                            <constraint firstItem="162-OR-zZf" firstAttribute="top" secondItem="b9X-C7-sz0" secondAttribute="bottom" id="B1g-e5-lRb"/>
-                            <constraint firstItem="162-OR-zZf" firstAttribute="trailing" secondItem="EGx-lz-fT9" secondAttribute="trailing" id="IBi-Ny-uYt"/>
-                            <constraint firstItem="b9X-C7-sz0" firstAttribute="trailing" secondItem="EGx-lz-fT9" secondAttribute="trailing" id="XPd-q3-ye2"/>
-                            <constraint firstItem="b9X-C7-sz0" firstAttribute="leading" secondItem="EGx-lz-fT9" secondAttribute="leading" id="YAa-WQ-GZQ"/>
-                            <constraint firstItem="162-OR-zZf" firstAttribute="leading" secondItem="EGx-lz-fT9" secondAttribute="leading" id="aWm-mP-h7i"/>
-                            <constraint firstItem="b9X-C7-sz0" firstAttribute="top" secondItem="EGx-lz-fT9" secondAttribute="top" id="jhz-eI-mze"/>
-                            <constraint firstItem="162-OR-zZf" firstAttribute="top" secondItem="b9X-C7-sz0" secondAttribute="bottom" id="nny-aq-2m9"/>
+                            <constraint firstItem="162-OR-zZf" firstAttribute="leading" secondItem="EGx-lz-fT9" secondAttribute="leading" id="8jQ-i6-f2C"/>
+                            <constraint firstItem="162-OR-zZf" firstAttribute="trailing" secondItem="EGx-lz-fT9" secondAttribute="trailing" id="DJq-yY-Cur"/>
+                            <constraint firstItem="162-OR-zZf" firstAttribute="top" secondItem="EGx-lz-fT9" secondAttribute="top" id="gZR-iW-ukh"/>
+                            <constraint firstAttribute="bottom" secondItem="162-OR-zZf" secondAttribute="bottom" id="zbF-gj-BfE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="6i9-ch-6D7"/>
                     <connections>
                         <outlet property="memoTextView" destination="162-OR-zZf" id="4R4-Gv-dyg"/>
                     </connections>
@@ -563,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="00X-Ep-LC1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469.60000000000002" y="2150.9852216748768"/>
+            <point key="canvasLocation" x="469" y="2151"/>
         </scene>
         <!--保存先を選択-->
         <scene sceneID="QBP-77-234">
@@ -712,6 +691,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSK-5D-u73" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2858.7786259541986" y="753.52112676056345"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="neR-Ge-EJc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="htD-uf-ihw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SGy-54-aHH">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="78k-aB-ZlE" kind="relationship" relationship="rootViewController" id="nwR-fF-wg9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQZ-rl-ErH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1286" y="2151"/>
         </scene>
     </scenes>
     <resources>
