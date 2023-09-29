@@ -385,8 +385,10 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     @objc func tappedMemoButton(_ sender: UIButton) {
-        let secondMemoForStudyViewController = storyboard?.instantiateViewController(withIdentifier: "SecondMemoView") as! SecondMemoForStudyViewController
-        if let sheet = secondMemoForStudyViewController.sheetPresentationController {
+        let NavToSecondMemoVc = self.storyboard?.instantiateViewController(withIdentifier: "NavToSecondMemoVC") as! UINavigationController
+        let secondMemoForStudyViewController = NavToSecondMemoVc.viewControllers.first as! SecondMemoForStudyViewController
+
+        if let sheet = NavToSecondMemoVc.sheetPresentationController {
             if #available(iOS 16.0, *) {
                 sheet.detents = [
                     .custom { context in 0.5 * context.maximumDetentValue },
@@ -398,14 +400,17 @@ class StudyViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 sheet.detents = [.medium(), .large()]
             }
         }
+
         secondMemoForStudyViewController.translationId = self.translationFolderArr[0].results[sender.tag].id
         secondMemoForStudyViewController.memo = self.translationFolderArr[0].results[sender.tag].secondMemo
+        secondMemoForStudyViewController.sentenceNum = sender.tag
 
         if self.searchBar.text != "" {
             secondMemoForStudyViewController.translationId = self.translationArr[sender.tag].id
             secondMemoForStudyViewController.memo = self.translationArr[sender.tag].secondMemo
         }
-        present(secondMemoForStudyViewController, animated: true, completion: nil)
+
+        present(NavToSecondMemoVc, animated: true, completion: nil)
     }
 
     @objc func tappedCheckMarkButton(_ sender: UIButton) {

@@ -695,7 +695,7 @@
         <!--Navigation Controller-->
         <scene sceneID="neR-Ge-EJc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="htD-uf-ihw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavToSecondMemoVC" automaticallyAdjustsScrollViewInsets="NO" id="htD-uf-ihw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SGy-54-aHH">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>

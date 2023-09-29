@@ -14,12 +14,14 @@ class SecondMemoForStudyViewController: UIViewController {
 
     internal var translationId: Int!
     internal var memo: String = ""
+    internal var sentenceNum: Int!
 
     private var realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.title = "No." + String(self.sentenceNum + 1)
         self.memoTextView.text = self.memo
         self.setDoneToolBar()
         // Do any additional setup after loading the view.
