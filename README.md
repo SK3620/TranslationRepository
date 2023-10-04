@@ -1,11 +1,11 @@
 # Translation Repository  
-Using the world's most powerful translation tool DeepL, it enables you to save the text to be translated and the translation results in the created folder.  
-（世界で最も精巧な翻訳ツールDeepLを使用して、作成したフォルダに翻訳するテキストと翻訳結果を保存することができます。）  
+While using DeepL translation, you can save the text you want to translate, and its translation results in a file you create. + You can perform instatnt English composition training, which is one of the ways of learning English.  
+（DeepL翻訳を利用しながら、翻訳したいテキストとその翻訳結果を、自分が作成したファイルに保存することができます。　＋　英語学習方法の一つである瞬間英作文トレーニングを行うことができます。）  
 # Description  
-It is a App for instant English compositon training, which includes a listening feature, a learning record feature, a translation history viewing feature, a favorite registration feature, and a simple SNS feature that allows users to connect with each other.  
-（リスニング機能、学習記録機能、翻訳履歴閲覧機能、お気に入り登録機能、ユーザー同士がつながる簡易SNS機能などを備えた、瞬間英作文トレーニングアプリです。）  
+It is an App for instant English composition training, which includes a listening feature, a learning record feature, a translation history viewing feature, a favorite registration feature, and a simple SNS feature that allows users to connect with each other.  
+（DeepL翻訳機能、リスニング機能、学習記録機能、翻訳履歴閲覧機能、お気に入り登録機能、ユーザー同士がつながる簡易SNS機能などを備えた、瞬間英作文トレーニングアプリです。）  
 # URL / Installation
-Compatible with IPhone only (iOS15.0 or later)  
+Compatible with iPhone only (iOS15.0 or later)  
 https://apps.apple.com/jp/app/deepl%E7%BF%BB%E8%A8%B3%E4%BF%9D%E5%AD%98/id6443462724  
 (You can download the application from this URL.)  
 # Requirement  
