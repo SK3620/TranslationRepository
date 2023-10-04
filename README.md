@@ -59,15 +59,21 @@ Installed in a terminal using CocoaPods
 #### 単語やフレーズのお気に入り機能  
 #### https://github.com/SK3620/TranslationRepository/tree/main/TranslationApp/Controller/Contents%20Of%20TabBar/PhraseWordViewController
 　・ライブラリParchement使用
-#### 簡易版SNS機能  
-　・ユーザー登録、ログイン、ログアウト、アカウント削除機能、問い合わせ機能  
+#### 簡易版SNS機能（ライブラリParchment使用）  
+#### https://github.com/SK3620/TranslationRepository/tree/main/TranslationApp/Controller/Contents%20Of%20SecondTabBar  
+　・ユーザー登録、ログイン、ログアウト  
 　・プロフィール設定機能（プロフィール画像設定可）  
 　・投稿機能（コメントも投稿可、画像投稿不可、フォロー機能なし）  
 　・いいね機能  
 　・ブックマーク機能  
 　・ブロック、投稿内容通報機能  
 　・投稿内容絞り込み検索機能（全文検索機能なし）  
-　・チャット機能  
+　・投稿削除、コメント削除機能、アカウント削除機能  
+  #### データの追加、削除、更新  
+  　・DispatchQueueで複数非同期処理を直列/並列処理 → notifyでMainQueueへ
+  #### チャット機能  
+  #### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20SecondTabBar/SelfViewControllers/ChatRoomViewController.swift  
+  　・ライブラリMessageKit使用  
 # Development Environment  
 MacOS Monterey version 12.6 MacBook Pro (13-inch, 2019, Two Thunderbolt 3 ports)  
 Xcode Version 14.1 (14B47b)  
