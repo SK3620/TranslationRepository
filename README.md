@@ -47,6 +47,7 @@ Installed in a terminal using CocoaPods
 　・ライブラリContextMenuSwift使用  
 　・文字列絞り込み検索可能  
 　・ライブラリSideMemu使用  
+　・フレームワークAVFoundationでリスニング機能実装  
 #### 学習記録機能  
 #### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/RecordViewController/RecordViewController.swift  
 　・ライブラリFSCalendar使用  
