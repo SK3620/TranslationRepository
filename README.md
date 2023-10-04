@@ -27,7 +27,13 @@ Parchment ~> 3.0
 MessageKit  
 RxSwift  
 
-Installed in a terminal using CocoaPods
+Installed in a terminal using CocoaPods  
+# Features / Used Technologies  
+翻訳機能（非同期処理）  
+　・AlmofireでDeeplAPIリクエスト  
+　・RxSwiftでイベント受け取り  
+　・MVCを意識  
+　・エラー処理にDoTryCatch文やResult＜Success, Failure＞型使用  
 # Development Environment  
 MacOS Monterey version 12.6 MacBook Pro (13-inch, 2019, Two Thunderbolt 3 ports)  
 Xcode Version 14.1 (14B47b)  
