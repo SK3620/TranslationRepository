@@ -10,7 +10,7 @@ https://apps.apple.com/jp/app/deepl%E7%BF%BB%E8%A8%B3%E4%BF%9D%E5%AD%98/id644346
 (You can download the application from this URL.)  
 # Requirement  
 Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)  
-RealmSwift 10.20.0  
+RealmSwift 10.20.0（＜List＞型で1対多を使用）  
 SVProgressHUD  
 FSCalendar  
 CalculateCalendarLogic  
@@ -30,10 +30,38 @@ RxSwift
 Installed in a terminal using CocoaPods  
 # Features / Used Technologies  
 翻訳機能（非同期処理） TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController  
-　・AlmofireでDeeplAPIリクエスト  
-　・RxSwiftでイベント受け取り  
+　・HTTP通信ライブラリAlmofireでDeeplAPIリクエスト  
+　・ライブラリRxSwiftでイベント受け取り  
 　・MVCを意識  
 　・エラー処理にDoTryCatch文やResult＜Success, Failure＞型使用  
+チュートリアル画面   
+　・StoryBoardなしでコーディングのみでUIレイアウトに挑戦  
+　・CollectionView、カスタムなCollectionViewCell使用  
+　・Cellに画像を使用  
+瞬間英作文が行える機能  
+　・ライブラリRealmSwiftの＜List＞型で１対多を使用  
+　・xibでUITableViewCell使用  
+　・ライブラリContextMenuSwift使用  
+　・文字列絞り込み検索可能  
+　・ライブラリSideMemu使用  
+学習記録機能  
+　・ライブラリFSCalendar使用  
+　・ライブラリRealmSwift使用  
+翻訳履歴閲覧機能  
+　・ライブラリRealmSwift
+　・TableViewに入力テキスト、翻訳結果、翻訳日時を表示  
+　・文字列絞り込み検索機能  
+単語やフレーズのお気に入り機能  
+　・ライブラリParchement使用
+簡易版SNS機能  
+　・ユーザー登録、ログイン、ログアウト、アカウント削除機能、問い合わせ機能  
+　・プロフィール設定機能（プロフィール画像設定可）  
+　・投稿機能（コメントも投稿可、画像投稿不可、フォロー機能なし）  
+　・いいね機能  
+　・ブックマーク機能  
+　・ブロック、投稿内容通報機能  
+　・投稿内容絞り込み検索機能（全文検索機能なし）  
+　・チャット機能  
 # Development Environment  
 MacOS Monterey version 12.6 MacBook Pro (13-inch, 2019, Two Thunderbolt 3 ports)  
 Xcode Version 14.1 (14B47b)  
