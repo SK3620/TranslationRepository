@@ -10,7 +10,7 @@ https://apps.apple.com/jp/app/deepl%E7%BF%BB%E8%A8%B3%E4%BF%9D%E5%AD%98/id644346
 (You can download the application from this URL.)  
 # Requirement  
 Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)  
-RealmSwift 10.20.0（＜List＞型で1対多を使用）  
+RealmSwift 10.20.0  
 SVProgressHUD  
 FSCalendar  
 CalculateCalendarLogic  
