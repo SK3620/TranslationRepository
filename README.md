@@ -28,7 +28,7 @@ MessageKit
 RxSwift  
 
 Installed in a terminal using CocoaPods  
-# Features / Used Technologies  
+# Features  
 #### 翻訳機能（非同期処理）  
 #### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/TranslateViewController/TranslateViewController.swift  
 　・HTTP通信ライブラリAlmofireでDeeplAPIリクエスト  
