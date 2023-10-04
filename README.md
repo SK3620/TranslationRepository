@@ -29,35 +29,37 @@ RxSwift
 
 Installed in a terminal using CocoaPods  
 # Features / Used Technologies  
-##### 翻訳機能（非同期処理）  
-##### [TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController](https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/TranslateViewController/TranslateViewController.swift)  
+#### 翻訳機能（非同期処理）  
+#### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/TranslateViewController/TranslateViewController.swift  
 　・HTTP通信ライブラリAlmofireでDeeplAPIリクエスト  
 　・ライブラリRxSwiftでイベント受け取り  
 　・MVCを意識  
 　・エラー処理にDoTryCatch文やResult＜Success, Failure＞型使用  
-##### チュートリアル画面  
-##### [TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TutorialViewController](https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/TranslateViewController/TutorialViewController.swift)  
+#### チュートリアル画面  
+#### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/TranslateViewController/TutorialViewController.swift  
 　・StoryBoardなしでコーディングのみでUIレイアウトに挑戦  
 　・CollectionView、カスタムなCollectionViewCell使用  
 　・Cellに画像を使用  
-##### 瞬間英作文が行える機能  
-##### [TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController](https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/FolderViewController/StudyViewController.swift)   
+#### 瞬間英作文が行える機能  
+#### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/FolderViewController/StudyViewController.swift  
 　・ライブラリRealmSwiftの＜List＞型で１対多を使用  
 　・xibでUITableViewCell使用  
 　・ライブラリContextMenuSwift使用  
 　・文字列絞り込み検索可能  
 　・ライブラリSideMemu使用  
-##### 学習記録機能  
-##### (https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/HistoryViewController/HistoryViewContoller.swift)  
+#### 学習記録機能  
+#### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/RecordViewController/RecordViewController.swift  
 　・ライブラリFSCalendar使用  
 　・ライブラリRealmSwift使用  
-翻訳履歴閲覧機能  
+#### 翻訳履歴閲覧機能  
+#### https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/HistoryViewController/HistoryViewContoller.swift  
 　・ライブラリRealmSwift  
 　・TableViewに入力テキスト、翻訳結果、翻訳日時を表示  
 　・文字列絞り込み検索機能  
-単語やフレーズのお気に入り機能  
+#### 単語やフレーズのお気に入り機能  
+#### https://github.com/SK3620/TranslationRepository/tree/main/TranslationApp/Controller/Contents%20Of%20TabBar/PhraseWordViewController
 　・ライブラリParchement使用
-簡易版SNS機能  
+#### 簡易版SNS機能  
 　・ユーザー登録、ログイン、ログアウト、アカウント削除機能、問い合わせ機能  
 　・プロフィール設定機能（プロフィール画像設定可）  
 　・投稿機能（コメントも投稿可、画像投稿不可、フォロー機能なし）  
