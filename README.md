@@ -59,7 +59,7 @@ Installed in a terminal using CocoaPods
 #### 単語やフレーズのお気に入り機能  
 #### https://github.com/SK3620/TranslationRepository/tree/main/TranslationApp/Controller/Contents%20Of%20TabBar/PhraseWordViewController
 　・ライブラリParchement使用
-#### 簡易版SNS機能（ライブラリParchment使用）  
+#### 簡易版SNS機能（ライブラリParchment、Firebase使用）  
 #### https://github.com/SK3620/TranslationRepository/tree/main/TranslationApp/Controller/Contents%20Of%20SecondTabBar  
 　・ユーザー登録、ログイン、ログアウト  
 　・プロフィール設定機能（プロフィール画像設定可）  
