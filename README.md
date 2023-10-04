@@ -29,7 +29,7 @@ RxSwift
 
 Installed in a terminal using CocoaPods  
 # Features / Used Technologies  
-翻訳機能（非同期処理） TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController  
+### 翻訳機能（非同期処理） TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController  
 　・HTTP通信ライブラリAlmofireでDeeplAPIリクエスト  
 　・ライブラリRxSwiftでイベント受け取り  
 　・MVCを意識  
@@ -48,7 +48,7 @@ Installed in a terminal using CocoaPods
 　・ライブラリFSCalendar使用  
 　・ライブラリRealmSwift使用  
 翻訳履歴閲覧機能  
-　・ライブラリRealmSwift
+　・ライブラリRealmSwift  
 　・TableViewに入力テキスト、翻訳結果、翻訳日時を表示  
 　・文字列絞り込み検索機能  
 単語やフレーズのお気に入り機能  
