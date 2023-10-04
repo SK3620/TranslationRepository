@@ -29,22 +29,26 @@ RxSwift
 
 Installed in a terminal using CocoaPods  
 # Features / Used Technologies  
-### 翻訳機能（非同期処理） TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController  
+##### 翻訳機能（非同期処理）  
+##### [TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController](https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/TranslateViewController/TranslateViewController.swift)  
 　・HTTP通信ライブラリAlmofireでDeeplAPIリクエスト  
 　・ライブラリRxSwiftでイベント受け取り  
 　・MVCを意識  
 　・エラー処理にDoTryCatch文やResult＜Success, Failure＞型使用  
-チュートリアル画面   
+##### チュートリアル画面  
+##### [TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TutorialViewController](https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/TranslateViewController/TutorialViewController.swift)  
 　・StoryBoardなしでコーディングのみでUIレイアウトに挑戦  
 　・CollectionView、カスタムなCollectionViewCell使用  
 　・Cellに画像を使用  
-瞬間英作文が行える機能  
+##### 瞬間英作文が行える機能  
+##### [TranslationRepository/TranslationApp/Controller/Contents Of TabBar/TranslateViewController](https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/FolderViewController/StudyViewController.swift)   
 　・ライブラリRealmSwiftの＜List＞型で１対多を使用  
 　・xibでUITableViewCell使用  
 　・ライブラリContextMenuSwift使用  
 　・文字列絞り込み検索可能  
 　・ライブラリSideMemu使用  
-学習記録機能  
+##### 学習記録機能  
+##### (https://github.com/SK3620/TranslationRepository/blob/main/TranslationApp/Controller/Contents%20Of%20TabBar/HistoryViewController/HistoryViewContoller.swift)  
 　・ライブラリFSCalendar使用  
 　・ライブラリRealmSwift使用  
 翻訳履歴閲覧機能  
